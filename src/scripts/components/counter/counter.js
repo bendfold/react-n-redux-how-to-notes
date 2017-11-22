@@ -1,5 +1,7 @@
 // Framework
 import React from 'react';
+// Components
+import CounterHeader from './counterHeader';
 
 const Counter = ({
 	counter,
@@ -7,8 +9,7 @@ const Counter = ({
 	onDownClick
 }) => (
 	<div className="counter-container">
-		<h2>Redux driven counter example</h2>
-		<p>Clicked Count Value: {counter}</p>
+		<CounterHeader counter={counter} />
 		<ul>
 			<li>
 				<button onClick={() => onUpClick()}>
