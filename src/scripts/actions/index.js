@@ -1,8 +1,9 @@
 import { ACTIONS } from '../constants/index';
 
-const { INCREMENT_COUNTER, DECREMENT_COUNTER } = ACTIONS;
-
-console.log(INCREMENT_COUNTER);
+const {
+	INCREMENT_COUNTER,
+	DECREMENT_COUNTER
+} = ACTIONS;
 
 export const incrementCounter = () => {
 	return {
