@@ -34,3 +34,4 @@ notes
 _temp
 build
 dist
+package-lock.json
