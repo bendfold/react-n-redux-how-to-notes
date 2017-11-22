@@ -1,6 +1,7 @@
 // Framework
 import React from 'react';
 import { Provider } from 'react-redux';
+import { Router, Route } from 'react-router';
 // State management
 import { createStore } from 'redux';
 import configureStore from './store/configureStore';
@@ -11,7 +12,9 @@ import CounterContainer from './components/counter/CounterContainer';
 
 const App = () => (
 	<Provider store={store}>
-		<CounterContainer />
+		<Router>
+			<Route path='/' component={CounterContainer} />
+		</Router>
 	</Provider>
 );
 
