@@ -52,7 +52,8 @@ const developmentConfig = merge([
 		compress: true,
 		stats: 'normal',
 		hot: true, // enable HMR on the server
-		open: true
+		open: true,
+		historyApiFallback: true
 	}),
 	parts.parseStylus( isProduction ),
 	parts.generateSourceMaps( { type: 'cheap-module-source-map' } ),

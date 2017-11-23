@@ -5,13 +5,14 @@ const cssnano = require('cssnano');
 const BabiliPlugin = require('babili-webpack-plugin');
 
 
-exports.devServer = ({ contentBase, compress, stats, hot, open }) => ({
+exports.devServer = ({ contentBase, compress, stats, hot, open, historyApiFallback }) => ({
 	devServer: {
 		contentBase,
 		compress,
 		stats,
 		hot, // enable HMR on the server
-		open
+		open,
+		historyApiFallback 
 	},
 });
 
