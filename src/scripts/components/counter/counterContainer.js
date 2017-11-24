@@ -9,8 +9,9 @@ import Counter from './counter';
 const mapStateToProps = (
 	state
 ) => {
+	console.log('state ', state);
 	return {
-		counter: state.counter
+		counter: state.counterA
 	};
 };
 
