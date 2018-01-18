@@ -3,14 +3,14 @@ import './styles/app.styl';
 // Framework
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, browserHistory } from 'react-router-dom'
 // Component
-import App from './scripts/app';
+import Root from './scripts/components/Root';
+// Store
+import configureStore from './scripts/store/configureStore';
+const store = configureStore();
 
 ReactDOM.render(
-	<BrowserRouter history={browserHistory}>
-		<App />
-	</BrowserRouter>,
+	<Root store={store} />,
 	document.getElementById('appRoot')
 );
 

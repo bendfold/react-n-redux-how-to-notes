@@ -3,13 +3,13 @@ import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 // Components
 import CounterContainer from '../counter/CounterContainer';
-import counterViewA from './counterViewA';
-import counterViewB from './counterViewB';
+import counterViewA from './CounterViewA';
+import counterViewB from './CounterViewB';
 
 const Main = () => (
 	<Switch>
 		<Route exact path='/' render={() => (
-			<Redirect 
+			<Redirect
 				exact
 				from='/'
 				to='/counterViewA'
