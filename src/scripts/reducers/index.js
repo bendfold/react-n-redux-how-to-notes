@@ -9,6 +9,8 @@ function createNamedWrapperReducer(reducerFunction, reducerName) {
 		const isInitializationCall = state === undefined;
 		if(name !== reducerName && !isInitializationCall) return state;
 
+		console.log('action ', action);
+
 		return reducerFunction(state, action);
 	}
 }

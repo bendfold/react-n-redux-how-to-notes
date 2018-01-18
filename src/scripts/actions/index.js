@@ -6,6 +6,7 @@ const {
 } = ACTIONS;
 
 export const incrementCounter = () => {
+	console.log('incrementCounter fired ---');
 	return {
 		type: INCREMENT_COUNTER
 	}

@@ -1,4 +1,7 @@
 const counter = (state = 0, action) => {
+
+	console.log('action ', action);
+
 	switch (action.type) {
 		case 'INCREMENT_COUNTER':
 			return state += 1;

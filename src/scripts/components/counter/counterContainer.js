@@ -1,17 +1,17 @@
 // Framework
 import React from 'react';
 import { connect } from 'react-redux';
-// Actions
-import { incrementCounter, decrementCounter } from '../../actions/index';
 // Components
 import Counter from './Counter';
+
 
 const mapStateToProps = (
 	state
 ) => {
-	console.log('state ', state);
+	console.log('state ', state)
+	console.log('props ', props)
 	return {
-		counter: state.counterA
+		counter: state.counter
 	};
 };
 

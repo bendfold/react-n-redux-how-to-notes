@@ -12,12 +12,12 @@ const Counter = ({
 		<CounterHeader counter={counter} />
 		<ul>
 			<li>
-				<button onClick={() => onUpClick()}>
+				<button onClick={onUpClick}>
 					Up
 				</button>
 			</li>
 			<li>
-				<button onClick={() => onDownClick()}>
+				<button onClick={onDownClick}>
 					Down
 				</button>
 			</li>
