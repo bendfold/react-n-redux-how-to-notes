@@ -1,16 +1,14 @@
 /* exported css */
 import './styles/app.styl';
-// Framework
+// FRAMEWORK
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, browserHistory } from 'react-router-dom'
-// Component
-import App from './scripts/app';
+// COMPONENTS
+import Root from './scripts/components/Root';
 
 ReactDOM.render(
-	<BrowserRouter history={browserHistory}>
-		<App />
-	</BrowserRouter>,
+	<Root />,
 	document.getElementById('appRoot')
 );
 
