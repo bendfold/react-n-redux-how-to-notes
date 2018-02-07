@@ -2,9 +2,13 @@
 import React from 'react';
 // COMPONENTS
 import Instructions from './instructions/Instructions';
+import CounterContainer from './counter/CounterContainer';
 
 const App = () => (
-	<Instructions />
+	<div>
+		<Instructions />
+		<CounterContainer />
+	</div>
 );
 
 export default App;
