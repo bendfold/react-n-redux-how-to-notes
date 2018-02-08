@@ -1,7 +1,9 @@
 import React from 'react';
+// COMPONENTS
+import Counter from './Counter';
 
 const CounterContainer = () => (
-	<h2>CounterContainer</h2>
+	<Counter />
 );
 
 export default CounterContainer;
