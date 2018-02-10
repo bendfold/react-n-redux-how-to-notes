@@ -29,10 +29,8 @@ const Instructions = () => (
 		<ul>
 			<li>The application creates an initial STORE, using Redux's <code>createStore</code> method.</li>
 			<li>The STORE takes in a <code>rootReducer</code> object</li>
-			<li>The rootReducer object, is anobject which contains all of the app's REDUCERS in one place. This is created using the <code>combineReducers()</code> method from Redux.</li>
+			<li>The rootReducer object, is an object which contains all of the app's REDUCERS in one place. This is created using the <code>combineReducers()</code> method from Redux.</li>
 			<li>The inidividual REDUCERS take in an initial STATE for the components to use.</li>
-			<li>We will pass the result of <code>store.getState()</code> into the simple component to give the components access to the data.</li>
-			<li>The React app needs to know about any updates to the STORE. In this example we will <code>store.subscribe</code> the React <code>render()</code> method to make the app re-render everytime the STATE updates.</li>
 		</ul>
 		<h4>Data Flow:</h4>
 		<ul>
@@ -41,6 +39,15 @@ const Instructions = () => (
 			<li>When the dispatch is fired, the REDUCERS are run and if the ACTION passed into the REDUCER matches, then the REDUCER runs it's code against the STATE and the STORE is updated.</li>
 			<li>The render that is subscribed to the store changes will fire off and the application will get the new state.</li>
 		</ul>
+
+		<h3>Things to note</h3>
+		<ul>
+			<li>The name of the prop on the state you are working with is defined in the reducer. In this case count. When you try to access this prop from within a component you must use the same name as the reduce it is tied to.</li>
+			<li>The props are availible to all the components via <code>context</code> the <code>Provider</code> element.</li>
+			<li>To access this data deep within the component heirachy, we need use <code>conect</code> in combination with <code>mapStateToProps</code> and <code>mapDispatchToProps</code> to hook the context up to the components</li>
+			<li>The <code>connect</code> function generates a wrapper component that subscribes to the store. When an action is dispatched, the wrapper component's callback is notified. It then runs your mapState function, and shallow-compares the result object from this time vs the result object from last time. If the results are different, then it passes the results to your "real" component" as props.</li>
+		</ul>
+
 		<h3>Folder Structure</h3>
 		<ul className="file-list-lvl-00">
 			<li>+-- index.html</li>
