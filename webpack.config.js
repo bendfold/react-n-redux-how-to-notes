@@ -43,7 +43,8 @@ const commonConfig = merge([
 		},
 	}),
 	parts.parsePug(),
-	parts.loadImages()
+	parts.loadImages(),
+	parts.parseMarkdown(),
 ]);
 
 const developmentConfig = merge([

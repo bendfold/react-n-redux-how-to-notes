@@ -12,7 +12,7 @@ exports.devServer = ({ contentBase, compress, stats, hot, open, historyApiFallba
 		stats,
 		hot, // enable HMR on the server
 		open,
-		historyApiFallback 
+		historyApiFallback
 	},
 });
 
@@ -22,6 +22,24 @@ exports.parsePug = () => ({
 			{
 				test: /\.pug$/,
 				use: ['pug-loader']
+			},
+		]
+	}
+});
+
+exports.parseMarkdown = () => ({
+	module: {
+		rules: [
+			{
+				test: /\.md$/,
+				use: [
+					{
+						loader: 'html-loader'
+					},
+					{
+						loader: 'markdown-loader'
+					}
+				]
 			},
 		]
 	}
@@ -40,7 +58,7 @@ exports.loadImages = (isProduction) => ({
 
 exports.parseStylus = (isProduction) => {
 
-	const cssDev = ['style-loader', 
+	const cssDev = ['style-loader',
 						{
 							loader: 'css-loader',
 							options: {

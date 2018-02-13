@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 import ReactRemarkable from 'react-remarkable';
-import content from '../../../content/markdown/test.md';
-import marked from "marked";
-
-
-
+import content from '../../../content/markdown/basic_setup.md';
 
 {/*
 const Instructions = () => (
@@ -93,38 +89,22 @@ const Instructions = () => (
 
 */}
 
-// const Instructions = () => {
 
-// 	console.log('content ', content  );
 
-// 	return <ReactRemarkable source='# Boss mate!'></ReactRemarkable>;
-// };
 
 class Instructions extends Component {
 	constructor(props) {
 		super(props);
 	}
-
-	componentWillMount() {
-		// import content from '../../../content/markdown/test.md';
-
-		fetch(content)
-			.then(response => {
-				return response.text()
-			})
-			.then(text => {
-				this.setState({
-					markdown: marked(text)
-				})
-			});
+	rawMarkup() {
+		return { __html: content };
 	}
-
 	render() {
-		return <h1>TODO</h1>;
+		return (
+			<div dangerouslySetInnerHTML={this.rawMarkup()} />
+		);
 	}
 
 }
-
-
 
 export default Instructions;
