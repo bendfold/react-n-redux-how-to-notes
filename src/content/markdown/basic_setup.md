@@ -1,32 +1,23 @@
-Basic Set Up
-------------
+## Basic Set Up
 
 The very bare minimum directory and file set up you will need for a simple React and Redux application is as follows.
 
-NPM Packages:
+### NPM Packages:
+- React
+- Redux
 
-React
-
-Redux
-
-Component Parts:
-
-React Component / Components
-
-Redux - STORE - Contains:
-
-*   Application STATE.
-*   DISPATCH method to allow components to communicate with the STORE, via ACTIONS > REDUCERS.
-*   SUBSCRIBE method to allow components to listen for changes to the STATE, which lives in the STORE.
-
-Redux - ACTION / ACTIONS
-
-Redux - REDUCER / REDUCERS
+### Component Parts:
+- React Component / Components
+- Redux - STORE - Contains:
+	*   Application STATE.
+	*   DISPATCH method to allow components to communicate with the STORE, via ACTIONS > REDUCERS.
+	*   SUBSCRIBE method to allow components to listen for changes to the STATE, which lives in the STORE.
+- Redux - ACTION / ACTIONS
+- Redux - REDUCER / REDUCERS
 
 ### How it works
 
 #### Initialisation:
-
 *   The application creates an initial STORE, using Redux's `createStore` method.
 *   The STORE takes in a `rootReducer` object
 *   The rootReducer object, is an object which contains all of the app's REDUCERS in one place. This is created using the `combineReducers()` method from Redux.
@@ -48,15 +39,18 @@ Redux - REDUCER / REDUCERS
 
 ### Folder Structure
 
-*   \+\-\- index.html
-*   \+\-\- /scripts
-
-    *   \+\-\- /components
-
-        *   |\+\-\- App.js
-    *   \+\-\- /actions
-
-        *   |\+\-\- index.js
-    *   \+\-\- /reducers
-
-        *   |\+\-\- index.js
+		+-- index.js
+		+-- scripts
+		|	+-- actions
+		|	|	+-- index.js
+		|	+-- store
+		|	|	+-- configureStore.js
+		|	+-- reducers
+		|	|	+-- index.js
+		|	|	+-- count.js
+		|	+-- components
+		|	|	+-- App.js
+		|	|	+-- Root.js
+		|	|	+-- counter
+		|	|	|	+-- CounterContainer.js
+		|____|____|____+-- Counter.js

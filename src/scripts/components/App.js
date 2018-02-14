@@ -6,8 +6,9 @@ import CounterContainer from './counter/CounterContainer';
 
 const App = () => (
 	<div>
-		<Instructions />
+		{/*<h1>React & Redux Counter Example</h1>*/} 
 		<CounterContainer />
+		<Instructions />
 	</div>
 );
 

@@ -6,7 +6,7 @@ const Counter = ({
 	onDownClick
 }) => (
 	<div className="counter-component">
-		<h3>Counter</h3>
+		<h2>Counter</h2>
 		<p>Count: {count}</p>
 		<ul>
 			<li>
