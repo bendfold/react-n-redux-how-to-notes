@@ -1,4 +1,4 @@
-# Base starting point for Webpack, React & Redux Projects, with examples 
+# Base starting point for Webpack, React & Redux Projects, with examples:
 
 ## Includes
 - CSS pre-processing via [Stylus][stylus] & [Nib][nib]
