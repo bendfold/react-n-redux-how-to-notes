@@ -1,5 +1,8 @@
 const CLASSNAME = {
-	noJs: 'no-js'
+	noJs: 'no-js',
+	mainNavList: 'main-nav-list',
+	mainNavItem: 'main-nav-item',
+	mainNavLink: 'main-nav-link',
 };
 
 const ACTIONS = {
