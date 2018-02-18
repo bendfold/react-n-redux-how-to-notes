@@ -6,9 +6,9 @@
 - ES6 Transpiling via [Babel][babel] and minification from [Babili][babili]
 - [Hot Module Replacement][HMR]
 - Linting via [eslint][eslint] / [Options][eslint-options]
-- React[react][react]
-- Redux[redux][redux]
-- React Router[reactRouter][reactRouter]
+- [React][react]
+- [Redux][redux]
+- [React Router][reactRouter]
 
 
 
