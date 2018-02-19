@@ -2,18 +2,6 @@
 
 The very bare minimum directory and file set up you will need for a simple React and Redux application is as follows.
 
-### NPM Packages:
-- React
-- Redux
-
-### Component Parts:
-- React Component / Components
-- Redux - STORE - Contains:
-	*   Application STATE.
-	*   DISPATCH method to allow components to communicate with the STORE, via ACTIONS > REDUCERS.
-	*   SUBSCRIBE method to allow components to listen for changes to the STATE, which lives in the STORE.
-- Redux - ACTION / ACTIONS
-- Redux - REDUCER / REDUCERS
 
 ### How it works
 
@@ -36,6 +24,19 @@ The very bare minimum directory and file set up you will need for a simple React
 *   The props are availible to all the components via `context` the `Provider` element.
 *   To access this data deep within the component heirachy, we need use `conect` in combination with `mapStateToProps` and `mapDispatchToProps` to hook the context up to the components
 *   The `connect` function generates a wrapper component that subscribes to the store. When an action is dispatched, the wrapper component's callback is notified. It then runs your mapState function, and shallow-compares the result object from this time vs the result object from last time. If the results are different, then it passes the results to your "real" component" as props.
+
+### NPM Packages:
+- React
+- Redux
+
+### Component Parts:
+- React Component / Components
+- Redux - STORE - Contains:
+	*   Application STATE.
+	*   DISPATCH method to allow components to communicate with the STORE, via ACTIONS > REDUCERS.
+	*   SUBSCRIBE method to allow components to listen for changes to the STATE, which lives in the STORE.
+- Redux - ACTION / ACTIONS
+- Redux - REDUCER / REDUCERS
 
 ### Folder Structure
 
