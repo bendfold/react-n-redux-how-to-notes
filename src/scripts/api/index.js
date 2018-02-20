@@ -11,6 +11,11 @@ const MAIN_NAV_ITEMS = [
 		link: 'adding-react-router',
 		id: uuidv4()
 	},
+	{
+		label: 'Counter Generator',
+		link: 'counter-generator',
+		id: uuidv4()
+	},
 ];
 
 export { MAIN_NAV_ITEMS };

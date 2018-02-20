@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import Navigation from './navigation/Navigation';
 import BasicCounterContainer from './basic-counter/BasicCounterContainer';
 import AddingReactRouterContainer from './add-react-router/AddingReactRouterContainer';
+import CounterGeneratorContainer from './counter-generator/CounterGeneratorContainer'
 import NoMatch from './no-match/NoMatch';
 
 const App = () => ([
@@ -12,6 +13,7 @@ const App = () => ([
 	<Switch>
 		<Route path='/basic-counter' component={BasicCounterContainer} />
 		<Route path='/adding-react-router' component={AddingReactRouterContainer} />
+		<Route path='/counter-generator' component={CounterGeneratorContainer} />
 		<Route exact path='/' render={() => (
 			<Redirect
 				exact
