@@ -13,4 +13,10 @@ const ACTIONS = {
 	DECREMENT_COUNTER: 'DECREMENT_COUNTER'
 };
 
-export { CLASSNAME, ACTIONS };
+const ROUTE_PATH = {
+	basicCounter: '/basic-counter',
+	addingReactRouter: '/adding-react-router',
+	counterGenerator: '/counter-generator'
+};
+
+export { CLASSNAME, ACTIONS, ROUTE_PATH };
