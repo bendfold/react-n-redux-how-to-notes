@@ -1,6 +1,8 @@
 // FRAMEWORK
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
+// LIBS
+import uuidv4 from 'uuid/v4';
 // COMPONENTS
 import Navigation from './navigation/Navigation';
 import BasicCounterContainer from './basic-counter/BasicCounterContainer';
@@ -11,12 +13,12 @@ import NoMatch from './no-match/NoMatch';
 import { ROUTE_PATH } from '../constants';
 
 const App = () => ([
-	<Navigation />,
-	<Switch>
-		<Route path={ROUTE_PATH.basicCounter} component={BasicCounterContainer} />
-		<Route path={ROUTE_PATH.addingReactRouter} component={AddingReactRouterContainer} />
-		<Route path={ROUTE_PATH.counterGenerator} component={CounterGeneratorContainer} />
-		<Route exact path='/' render={() => (
+	<Navigation key={uuidv4()} />,
+	<Switch key={uuidv4()}>
+		<Route key={uuidv4()} path={ROUTE_PATH.basicCounter} component={BasicCounterContainer} />
+		<Route key={uuidv4()} path={ROUTE_PATH.addingReactRouter} component={AddingReactRouterContainer} />
+		<Route key={uuidv4()} path={ROUTE_PATH.counterGenerator} component={CounterGeneratorContainer} />
+		<Route key={uuidv4()} exact path='/' render={() => (
 			<Redirect
 				exact
 				from='/'
@@ -24,7 +26,7 @@ const App = () => ([
 				key="from-root"
 			/>
 		)} />
-		<Route component={NoMatch} />
+		<Route key={uuidv4()} component={NoMatch} />
 	</Switch>
 ]);
 
