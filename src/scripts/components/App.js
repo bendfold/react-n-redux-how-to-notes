@@ -15,7 +15,7 @@ import { ROUTE_PATH } from '../constants';
 const App = () => ([
 	<Navigation key={uuidv4()} />,
 	<Switch key={uuidv4()}>
-		<Route key={uuidv4()} path={ROUTE_PATH.basicCounter} component={BasicCounterContainer} />
+		<Route path={ROUTE_PATH.basicCounter} component={BasicCounterContainer} />
 		<Route key={uuidv4()} path={ROUTE_PATH.addingReactRouter} component={AddingReactRouterContainer} />
 		<Route key={uuidv4()} path={ROUTE_PATH.counterGenerator} component={CounterGeneratorContainer} />
 		<Route key={uuidv4()} exact path='/' render={() => (

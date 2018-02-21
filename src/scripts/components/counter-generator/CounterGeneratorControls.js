@@ -3,9 +3,15 @@ import React from 'react';
 // CONSTANTS
 import {CLASSNAME} from '../../constants';
 
-const CounterGeneratorControls = () => (
+const CounterGeneratorControls = ({
+	onClick
+}) => (
 	<ul className={CLASSNAME.counterGeneratorControlList}>
-		<li>Uberisch</li>
+		<li>
+			<button onClick={onClick}>
+				Add a counter
+			</button>
+		</li>
 	</ul>
 );
 
