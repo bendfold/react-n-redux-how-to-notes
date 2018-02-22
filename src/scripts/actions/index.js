@@ -1,9 +1,9 @@
-import { ACTIONS } from '../constants/index';
+import { ACTION_TYPES } from '../constants/index';
 
 const {
 	INCREMENT_COUNTER,
 	DECREMENT_COUNTER
-} = ACTIONS;
+} = ACTION_TYPES;
 
 export const incrementCounter = () => {
 	return {
