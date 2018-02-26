@@ -9,7 +9,6 @@ describe('ACTIONS', () => {
 			};
 
 			expect(incrementCounter()).toEqual(expectedAction);
-		
 		});
 	});
 });
