@@ -5,9 +5,9 @@ const CLASSNAME = {
 	mainNavLink: 'main-nav-link',
 };
 
-const ACTION_TYPES = {
+const TYPES = {
 	INCREMENT_COUNTER: 'INCREMENT_COUNTER',
 	DECREMENT_COUNTER: 'DECREMENT_COUNTER'
 };
 
-export { CLASSNAME, ACTION_TYPES };
+export { CLASSNAME, TYPES };
