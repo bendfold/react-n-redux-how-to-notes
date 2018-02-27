@@ -1,17 +1,18 @@
-import { ACTIONS } from '../constants/index';
+import { TYPES } from '../constants/index';
 
-const {
-	INCREMENT_COUNTER,
-	DECREMENT_COUNTER
-} = ACTIONS;
-
-export const incrementCounter = () => {
+const incrementCounter = () => {
 	return {
-		type: INCREMENT_COUNTER
+		type: TYPES.INCREMENT_COUNTER
 	}
 };
-export const decrementCounter = () => {
+
+const decrementCounter = () => {
 	return {
-		type: DECREMENT_COUNTER
+		type: TYPES.DECREMENT_COUNTER
 	}
+};
+
+export {
+	incrementCounter,
+	decrementCounter,
 };
