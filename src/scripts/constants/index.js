@@ -20,4 +20,8 @@ const ROUTE_PATH = {
 	counterGenerator: '/counter-generator'
 };
 
-export { CLASSNAME, TYPES, ROUTE_PATH };
+export { 
+	CLASSNAME, 
+	TYPES, 
+	ROUTE_PATH
+};
