@@ -1,9 +1,9 @@
 // CONSTANTS
-import { ACTIONS } from '../constants';
+import { TYPES } from '../constants';
 
 const multiCounters = (state = [], action) => {
 	switch (action.type) {
-		case ACTIONS.CREATE_COUNTER:
+		case TYPES.CREATE_COUNTER:
 			console.log('You got to here...');
 			return state ;
 		default:
