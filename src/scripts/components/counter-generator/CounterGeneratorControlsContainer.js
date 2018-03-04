@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 // COMPONENTS
 import CounterGeneratorControls from './CounterGeneratorControls';
 // CONSTANTS
-import { ACTIONS } from '../../constants';
+import { TYPE } from '../../constants';
 
 const mapStateToProps = (state) => (state);
 
@@ -12,7 +12,7 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		onClick: () => {
 			dispatch({
-				type: ACTIONS.CREATE_COUNTER
+				type: TYPE.CREATE_COUNTER
 			})
 		}
 	}
