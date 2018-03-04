@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 // COMPONENTS
 import Counter from './Counter';
 // CONSTANTS
-import { ACTIONS } from '../../constants';
+import { TYPE } from '../../constants';
 
 const mapStateToProps = (state) => {
 	return {
@@ -16,12 +16,12 @@ const mapDispatchToProps = (dispatch) => {
 	return {
 		onUpClick: () => {
 			dispatch({
-				type: ACTIONS.INCREMENT_COUNTER
+				type: TYPE.INCREMENT_COUNTER
 			})
 		},
 		onDownClick: () => {
 			dispatch({
-				type: ACTIONS.DECREMENT_COUNTER
+				type: TYPE.DECREMENT_COUNTER
 			})
 		}
 	}

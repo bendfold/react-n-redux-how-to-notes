@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
 
 import count from './count';
-import multiCounters from './multiCounters';
+import { createCounter } from './multiCounter';
 
 const rootReducer = combineReducers({
 	count,
-	multiCounters
+	createCounter
 });
 
 export default rootReducer;

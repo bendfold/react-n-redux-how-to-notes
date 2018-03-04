@@ -1,11 +1,11 @@
 // CONSTANTS
-import { TYPES } from '../constants';
+import { TYPE } from '../constants';
 
 const count = (state = 0, action) => {
 	switch (action.type) {
-		case TYPES.INCREMENT_COUNTER:
+		case TYPE.INCREMENT_COUNTER:
 			return state += 1;
-		case TYPES.DECREMENT_COUNTER:
+		case TYPE.DECREMENT_COUNTER:
 			return (state > 0) ? state -= 1 : state;
 		default:
 			return state;

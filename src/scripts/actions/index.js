@@ -1,18 +1,25 @@
-import { TYPES } from '../constants/index';
+import { TYPE } from '../constants/index';
 
 const incrementCounter = () => {
 	return {
-		type: TYPES.INCREMENT_COUNTER
+		type: TYPE.INCREMENT_COUNTER
 	}
 };
 
 const decrementCounter = () => {
 	return {
-		type: TYPES.DECREMENT_COUNTER
+		type: TYPE.DECREMENT_COUNTER
+	}
+};
+
+const createCounter = () => {
+	return {
+		type: TYPE.CREATE_COUNTER
 	}
 };
 
 export {
 	incrementCounter,
 	decrementCounter,
+	createCounter,
 };

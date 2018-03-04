@@ -8,7 +8,7 @@ const CLASSNAME = {
 	counterGeneratorControlList: 'counter-generator-control-list',
 };
 
-const TYPES = {
+const TYPE = {
 	INCREMENT_COUNTER: 'INCREMENT_COUNTER',
 	DECREMENT_COUNTER: 'DECREMENT_COUNTER',
 	CREATE_COUNTER: 'CREATE_COUNTER',
@@ -20,8 +20,8 @@ const ROUTE_PATH = {
 	counterGenerator: '/counter-generator'
 };
 
-export { 
-	CLASSNAME, 
-	TYPES, 
+export {
+	CLASSNAME,
+	TYPE,
 	ROUTE_PATH
 };
