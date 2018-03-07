@@ -19,7 +19,7 @@ describe('REDUCERS', () => {
 			expect(actualResult).toMatchObject(expectedResult);
 		});
 
-/*
+
 		it('should create a new counter object with a correctly incremented ID', () => {
 			const stateBefore ={
 				counters: [
@@ -47,6 +47,6 @@ describe('REDUCERS', () => {
 
 			expect(actualResult).toMatchObject(expectedResult);
 		});
-*/
+/**/
 	});
 });
