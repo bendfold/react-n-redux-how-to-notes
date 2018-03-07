@@ -1,8 +1,13 @@
 // FRAMEWORK
 import React from 'react';
 
-const CounterList = () => (
-	<h2>I will be your list</h2>
-);
+const CounterList = (state) => {
+	console.log('counterCollection ___ ', state.counterCollection);
+	return (<ul>
+			{state.counterCollection.map((counter) => {
+				return <li>++++ {counter.id}</li>
+			})}
+		</ul>);
+};
 
 export default CounterList;
