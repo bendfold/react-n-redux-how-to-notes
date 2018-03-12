@@ -17,7 +17,6 @@ describe('REDUCERS', () => {
 			expect(actualResult).toMatchObject(expectedResult);
 		});
 
-
 		it('should create a new counter object with a correctly incremented ID', () => {
 			const stateBefore = [
 						{
@@ -69,7 +68,7 @@ describe('REDUCERS', () => {
 				}
 			];
 
-			expect(multiCount(stateBefore, action).toEqual(expectedResult));
+			expect(multiCount(stateBefore, action)).toEqual(expectedResult);
 		});
 	});
 	describe('Multi counter decrement', () => {
@@ -99,7 +98,7 @@ describe('REDUCERS', () => {
 				}
 			];
 
-			expect(multiCount(stateBefore, action).toEqual(expectedResult));
+			expect(multiCount(stateBefore, action)).toEqual(expectedResult);
 		});
 	});
 });
