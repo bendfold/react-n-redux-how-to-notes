@@ -8,7 +8,22 @@ const mapStateToProps = (state) => {
 	return {counterCollection: state.counterCollection}
 };
 
-const mapDispatchToProps = (dispatch) => ({dispatch});
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onUpClick: (id) => {
+			dispatch({
+				type: TYPE.INCREMENT_MULTI_COUNTER,
+				id
+			})
+		},
+		onDownClick: (id) => {
+			dispatch({
+				type: TYPE.DECREMENT_MULTI_COUNTER,
+				id
+			})
+		}
+	}
+};
 
 const CounterListContainer = connect(
 	mapStateToProps,

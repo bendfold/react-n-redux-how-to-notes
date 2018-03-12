@@ -18,3 +18,20 @@ export const createCounter = (state = [], action) => {
 			return state;
 	}
 }
+
+
+export const multiCount = (state = [], action) => {
+	switch (action.type) {
+		case: TYPE.INCREMENT_MULTI_COUNTER:
+			return: [
+				...state,
+				// var car = [...fuzz.slice(0, 2), ...fuzz.filter((item) => (item.id === 2)), ...fuzz.slice(3)]
+			];
+		case: TYPE.DECREMENT_MULTI_COUNTER:
+			return: [
+				...state
+			];
+		default:
+			return state;
+	}
+};
