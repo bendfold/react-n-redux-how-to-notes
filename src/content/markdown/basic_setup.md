@@ -22,7 +22,7 @@ The very bare minimum directory and file set up you will need for a simple React
 
 *   The name of the prop on the state you are working with is defined in the reducer. In this case count. When you try to access this prop from within a component you must use the same name as the reduce it is tied to.
 *   The props are availible to all the components via `context` the `Provider` element.
-*   To access this data deep within the component heirachy, we need use `conect` in combination with `mapStateToProps` and `mapDispatchToProps` to hook the context up to the components
+*   To access this data deep within the component heirachy, we need use `connect` in combination with `mapStateToProps` and `mapDispatchToProps` to hook the context up to the components
 *   The `connect` function generates a wrapper component that subscribes to the store. When an action is dispatched, the wrapper component's callback is notified. It then runs your mapState function, and shallow-compares the result object from this time vs the result object from last time. If the results are different, then it passes the results to your "real" component" as props.
 
 ### NPM Packages:

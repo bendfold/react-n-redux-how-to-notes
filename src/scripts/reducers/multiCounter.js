@@ -1,7 +1,7 @@
 // CONSTANTS
 import { TYPE } from '../constants';
 
-export const createCounter = (state = [], action) => {
+export const multiCounter = (state = [], action) => {
 	switch (action.type) {
 		case TYPE.CREATE_COUNTER:
 			return [
@@ -14,14 +14,6 @@ export const createCounter = (state = [], action) => {
 					count: 0
 				}
 			];
-		default:
-			return state;
-	}
-}
-
-
-export const multiCount = (state = [], action) => {
-	switch (action.type) {
 		case TYPE.INCREMENT_MULTI_COUNTER:
 			return state.map((item => {
 				if (item.id === action.id) {
@@ -39,4 +31,4 @@ export const multiCount = (state = [], action) => {
 		default:
 			return state;
 	}
-};
+}

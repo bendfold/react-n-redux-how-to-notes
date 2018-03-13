@@ -3,6 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 // COMPONENTS
 import CounterList from './CounterList';
+// CONSTANTS
+import { TYPE } from '../../constants';
 
 const mapStateToProps = (state) => {
 	return {counterCollection: state.counterCollection}

@@ -1,18 +1,17 @@
-import { createCounter, multiCount } from './multiCounter';
+import { multiCounter } from './multiCounter';
 import { TYPE } from '../constants/index';
 
 describe('REDUCERS', () => {
 	describe('Create counter', () => {
 		it('should create a new counter object and add it to the state', () => {
 			const stateBefore = [];
-
 			const expectedResult = [
 						{
 							id: 0,
 							count: 0
 						}
 					];
-			const actualResult = createCounter(stateBefore, { type: TYPE.CREATE_COUNTER });
+			const actualResult = multiCounter(stateBefore, { type: TYPE.CREATE_COUNTER });
 
 			expect(actualResult).toMatchObject(expectedResult);
 		});
@@ -24,7 +23,6 @@ describe('REDUCERS', () => {
 							count: 0
 						}
 					];
-
 			const expectedResult = [
 					{
 						id: 0,
@@ -35,8 +33,7 @@ describe('REDUCERS', () => {
 						count: 0
 					}
 				];
-
-			const actualResult = createCounter(stateBefore, { type: TYPE.CREATE_COUNTER });
+			const actualResult = multiCounter(stateBefore, { type: TYPE.CREATE_COUNTER });
 
 			expect(actualResult).toMatchObject(expectedResult);
 		});
@@ -68,7 +65,7 @@ describe('REDUCERS', () => {
 				}
 			];
 
-			expect(multiCount(stateBefore, action)).toEqual(expectedResult);
+			expect(multiCounter(stateBefore, action)).toEqual(expectedResult);
 		});
 	});
 	describe('Multi counter decrement', () => {
@@ -98,7 +95,7 @@ describe('REDUCERS', () => {
 				}
 			];
 
-			expect(multiCount(stateBefore, action)).toEqual(expectedResult);
+			expect(multiCounter(stateBefore, action)).toEqual(expectedResult);
 		});
 	});
 });
