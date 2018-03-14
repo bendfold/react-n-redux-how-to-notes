@@ -7,7 +7,7 @@ import CounterList from './CounterList';
 import { TYPE } from '../../constants';
 
 const mapStateToProps = (state) => {
-	return {counterCollection: state.counterCollection}
+	return {counterCollection: state.counterCollection};
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -24,7 +24,7 @@ const mapDispatchToProps = (dispatch) => {
 				id
 			})
 		}
-	}
+	};
 };
 
 const CounterListContainer = connect(

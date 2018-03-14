@@ -11,6 +11,8 @@ Building upon the "Basic Setup Example", we added in:
 - Inside ``CounterGeneratorControlsContainer`` we ``connect`` the ``CounterGeneratorControls`` to the ``dispatch`` so that it can publish the ``CREATE_COUNTER`` action type.
 - This is picked up by the ``multiCounter`` reducer which creates a new counter item with an ID and count value. This object is then added to the ``multiCounter`` state.
 - The ``multiCounter`` is registered in the store as ``counterCollection`` when we combineReducers. As a result the object created in the previous step is now available on the state as the ``counterCollection``.
+- We ``connect`` up the ``CounterList`` with the ``counterCollection`` and the relevant dispatch methods in the ``CounterListContainer``. 
+- Within the ``CounterList`` we can now access the data in the ``counterCollection`` as well as dispatch messages to update the state.
 
 ### Things to note
 - Initially I had the increment/decrement reducer seperate to the counterCollection. However this did not work as the state in the increment/decrement reducer could not see the state in the counterCollection. So I had to combine them. I believe this should be possible using HOC's to combine reducer states. For the purposes of these notes this is a bit much though, as the focus is to keep it simple.
