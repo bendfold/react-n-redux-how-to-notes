@@ -1,19 +1,27 @@
 // CONSTANTS
 import { TYPE } from '../constants';
 
-export const multiCounter = (state = [], action) => {
+export const multiCounter = (state = {}, action) => {
 	switch (action.type) {
 		case TYPE.CREATE_COUNTER:
-			return [
+		
+			// TODO - Lift out to helpers
+			function getMaxId(idList) {
+				return idList.reduce((maxId, currentVal) => {
+					return Math.max(parseInt(currentVal, 10), maxId);
+				}, 0) + 1;
+			};
+
+			const counterKeys = Object.keys(state);
+			const newId = !!counterKeys.length ? getMaxId( counterKeys ) : 0;
+			
+			return	{
 				...state,
-				{
-					// ID generator from https://redux.js.org/recipes/writing-tests#reducers
-					id: state.reduce((maxId, counterItem) => {
-						return Math.max(counterItem.id, maxId);
-					}, -1) + 1,
+				[newId] : {
+					id: newId,
 					count: 0
 				}
-			];
+			};
 		case TYPE.INCREMENT_MULTI_COUNTER:
 			return state.map((item => {
 				if (item.id === action.id) {
