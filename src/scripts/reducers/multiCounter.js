@@ -1,7 +1,7 @@
 // CONSTANTS
 import { TYPE } from '../constants';
 // LIBS
-// import { Map } from 'immutable';
+import { v4 } from 'uuid';
 
 export const multiCounter = (state = {}, action) => {
 	switch (action.type) {
@@ -16,7 +16,7 @@ export const multiCounter = (state = {}, action) => {
 
 			const counterKeys = Object.keys(state);
 			const newId = !!counterKeys.length ? getMaxId( counterKeys ) : 0;
-			
+
 			return	{
 				...state,
 				[newId] : {
