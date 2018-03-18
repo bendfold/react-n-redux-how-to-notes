@@ -12,6 +12,12 @@ import { BrowserRouter, browserHistory } from 'react-router-dom'
 import Root from './scripts/components/Root';
 // STORE
 import configureStore from './scripts/store/configureStore';
+// API
+import { fetchCounterCollection } from './scripts/api';
+
+fetchCounterCollection().then((counterCollection) => {
+	console.log('counterCollection --- ', counterCollection )
+});
 
 ReactDOM.render(
 	<Root store={configureStore()} />,

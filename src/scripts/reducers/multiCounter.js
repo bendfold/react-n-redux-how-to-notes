@@ -7,6 +7,9 @@ export const multiCounter = (state = {}, action) => {
 	switch (action.type) {
 		case TYPE.CREATE_COUNTER:
 			const newId = v4();
+
+			console.log('state ', state);
+
 			return	{
 				...state,
 				[newId] : {
