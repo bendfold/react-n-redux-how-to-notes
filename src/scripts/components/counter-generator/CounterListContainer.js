@@ -7,14 +7,14 @@ import CounterList from './CounterList';
 import { TYPE } from '../../constants';
 
 const mapStateToProps = (state) => {
-	return {counterCollection: state.counterCollection};
+	return {counterCollection: state.counterCollectionA};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onUpClick: (id) => {
 			dispatch({
-				type: TYPE.INCREMENT_MULTI_COUNTER,
+				type: `${TYPE.INCREMENT_MULTI_COUNTER}A`,
 				id
 			})
 		},

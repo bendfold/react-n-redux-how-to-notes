@@ -11,9 +11,9 @@ import content from '../../../content/markdown/counter-generator.md';
 
 const CounterGeneratorContainer = () => ([
 	<h1 key={uuidv4()}>React & Redux - Counter Generator</h1>,
-	<Instructions key={uuidv4()} content={content} />,
 	<CounterGeneratorControlsContainer key={uuidv4()} />,
-	<CounterListContainer key={uuidv4()} />
+	<CounterListContainer key={uuidv4()} />,
+	<Instructions key={uuidv4()} content={content} />
 ]);
 
 export default CounterGeneratorContainer;
