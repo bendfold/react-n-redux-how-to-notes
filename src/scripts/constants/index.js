@@ -23,8 +23,14 @@ const ROUTE_PATH = {
 	mockDataLoad: '/mock-data-load'
 };
 
+const REDUCER_NAME = {
+	A: 'A',
+	B: 'B'
+};
+
 export {
 	CLASSNAME,
 	TYPE,
-	ROUTE_PATH
+	ROUTE_PATH,
+	REDUCER_NAME
 };
