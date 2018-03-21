@@ -1,6 +1,8 @@
 // FRAMEWORK
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// ACTIONS
+import * as actions from '../../actions';
 // COMPONENTS
 import CounterList from '../counter-generator/CounterList';
 // CONSTANTS
@@ -8,6 +10,7 @@ import { TYPE, REDUCER_NAME } from '../../constants';
 // API
 import { fetchCounterCollection } from '../../api';
 
+const reducerName = REDUCER_NAME.B;
 
 class CounterListContainer extends Component {
 	constructor(props) {
@@ -18,7 +21,7 @@ class CounterListContainer extends Component {
 	}
 	fetchData() {
 		fetchCounterCollection().then((payload) => {
-			this.props.receiveCounters(payload, REDUCER_NAME.B);
+			this.props.receiveCounters(payload, reducerName);
 		});
 	}
 	render() {
@@ -33,25 +36,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onUpClick: (id) => {
-			dispatch({
-				type: TYPE.INCREMENT_MULTI_COUNTER,
-				name: REDUCER_NAME.B,
-				id
-			})
+			dispatch(actions.incrementCounter(id, reducerName));
 		},
 		onDownClick: (id) => {
-			dispatch({
-				type: TYPE.DECREMENT_MULTI_COUNTER,
-				name: REDUCER_NAME.B,
-				id
-			})
+			dispatch(actions.decrementCounter(id, reducerName));
 		},
 		receiveCounters: (payload, name) => {
-			dispatch({
-				type: TYPE.RECEIVE_COUNTERS,
-				name,
-				payload
-			})
+			dispatch(actions.receiveCounters(payload, name));
 		}
 	};
 };

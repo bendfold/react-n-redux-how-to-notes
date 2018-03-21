@@ -1,3 +1,7 @@
+/*
+This file does replicate the stuff in multiCounter, but for demo purposes it 
+*/
+
 // CONSTANTS
 import { TYPE } from '../constants';
 

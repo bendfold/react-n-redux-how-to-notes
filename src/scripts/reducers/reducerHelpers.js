@@ -7,9 +7,7 @@ export const createNamedReducer = (reducerFunction, reducerName) => {
 	return (state, action) => {
 		const {name} = action;
 		const isInitializationCall = state === undefined;
-
-		console.log('createNamedReducer ---- ', action);
-
+		
 		if(name !== reducerName && !isInitializationCall) return state;
 		 
 		return reducerFunction(state, action);

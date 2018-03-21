@@ -1,10 +1,14 @@
 // FRAMEWORK
 import React from 'react';
 import { connect } from 'react-redux';
+// ACTIONS
+import * as actions from '../../actions';
 // COMPONENTS
 import CounterList from './CounterList';
 // CONSTANTS
 import { TYPE, REDUCER_NAME } from '../../constants';
+
+const reducerName = REDUCER_NAME.A;
 
 const mapStateToProps = (state) => {
 	return {counterCollection: state.counterCollectionA};
@@ -13,19 +17,11 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onUpClick: (id) => {
-			dispatch({
-				type: TYPE.INCREMENT_MULTI_COUNTER,
-				name: REDUCER_NAME.A,
-				id
-			})
+			dispatch(actions.incrementCounter(id, reducerName));
 		},
 		onDownClick: (id) => {
-			dispatch({
-				type: TYPE.DECREMENT_MULTI_COUNTER,
-				name: REDUCER_NAME.A,
-				id
-			})
-		}
+			dispatch(actions.decrementCounter(id, reducerName));
+		},
 	};
 };
 
