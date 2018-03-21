@@ -4,6 +4,9 @@ import { TYPE } from '../constants';
 import { v4 } from 'uuid';
 
 export const multiCounter = (state = {}, action) => {
+
+	console.log('action OOOOO ',action);
+
 	switch (action.type) {
 		case TYPE.CREATE_COUNTER:
 			const newId = v4();
@@ -14,6 +17,12 @@ export const multiCounter = (state = {}, action) => {
 					count: 0
 				}
 			};
+		case TYPE.RECEIVE_COUNTERS:
+			// console.log('action l ', action);
+			return {
+				...state,
+				...action.payload
+			}
 		case TYPE.INCREMENT_MULTI_COUNTER:
 			if (state.hasOwnProperty(action.id)) {
 				return {

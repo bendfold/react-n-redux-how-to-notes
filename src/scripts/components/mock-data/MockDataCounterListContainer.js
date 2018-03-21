@@ -14,27 +14,17 @@ class CounterListContainer extends Component {
 		super(props);
 	}
 	componentDidMount() {
-		
-		const {counterCollection} = this.props;
-
-		fetchCounterCollection().then((data) => {
-			console.log('DidMount counterCollection ---> ', data);
-	
+		this.fetchData();
+	}
+	fetchData() {
+		fetchCounterCollection().then((payload) => {
+			this.props.receiveCounters(payload, REDUCER_NAME.B);
 		});
 	}
-
-	componentDidUpdate(prevProps) {
-		fetchCounterCollection().then((data) => {
-			console.log('DidUpdate counterCollection ---> ', data);
-	
-		});
-	}
-
 	render() {
-		return <CounterList {...this.props}/> 
+		return <CounterList {...this.props} />
 	}
 }
-
 
 const mapStateToProps = (state) => {
 	return {counterCollection: state.counterCollectionB};
@@ -54,6 +44,13 @@ const mapDispatchToProps = (dispatch) => {
 				type: TYPE.DECREMENT_MULTI_COUNTER,
 				name: REDUCER_NAME.B,
 				id
+			})
+		},
+		receiveCounters: (payload, name) => {
+			dispatch({
+				type: TYPE.RECEIVE_COUNTERS,
+				name,
+				payload
 			})
 		}
 	};
