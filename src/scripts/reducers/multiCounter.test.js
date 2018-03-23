@@ -1,13 +1,28 @@
+// REDUCER
 import { multiCounter } from './multiCounter';
+// CONSTANTS
 import { TYPE } from '../constants/index';
+// ACTIONS
+import * as actions from '../actions';
+// API
+import { mockDataBase } from '../api';
 // LIBS
 import { v4 } from 'uuid';
 
 describe('REDUCERS', () => {
 
+	describe('Recieve counters', () => {
+		it('Should decrement the counter relative to the supplied ID', () => {
+			const stateBefore = {};
+			const actualResult = multiCounter(stateBefore, actions.receiveCounters(mockDataBase));
+
+			expect(actualResult).toEqual(mockDataBase);
+		});
+	});
+
 	describe('Create counter', () => {
 		const stateBefore = {};
-		const actualResult = multiCounter(stateBefore, { type: TYPE.CREATE_COUNTER });
+		const actualResult = multiCounter(stateBefore, actions.createCounter());
 
 		it('Should create a new counter object and add it to the state.', () => {
 			expect(typeof actualResult).toEqual('object');
@@ -42,67 +57,24 @@ describe('REDUCERS', () => {
 
 		});
 	});
-
 	describe('Multi counter increment', () => {
 		it('Should increment the counter relative to the supplied ID', () => {
-			const id00 = v4();
-			const id01 = v4();
+			const stateBefore = multiCounter(stateBefore, actions.receiveCounters(mockDataBase));
+			const firstItemKey = Object.keys(stateBefore)[0];
+			const firstItemId = stateBefore[firstItemKey].id;
+			const actualResult = multiCounter(stateBefore, actions.incrementCounter(firstItemId));
 
-			const stateBefore = {
-				[id00] : {
-					id: id00,
-					count: 0
-				},
-				[id01] : {
-					id: id01,
-					count: 0
-				}
-			};
-			const action = {
-				id: id01,
-				type: TYPE.INCREMENT_MULTI_COUNTER
-			};
-			const expectedResult = {
-				...stateBefore,
-				[action.id]: {
-					...stateBefore[action.id],
-					count: 1
-				}
-			};
-
-			expect(multiCounter(stateBefore, action)).toEqual(expectedResult);
+			expect(actualResult[firstItemId].count).toEqual(stateBefore[firstItemId].count + 1);
 		});
 	});
-
 	describe('Multi counter decrement', () => {
 		it('Should decrement the counter relative to the supplied ID', () => {
-			const id00 = v4();
-			const id01 = v4();
+			const stateBefore = multiCounter(stateBefore, actions.receiveCounters(mockDataBase));
+			const firstItemKey = Object.keys(stateBefore)[0];
+			const firstItemId = stateBefore[firstItemKey].id;
+			const actualResult = multiCounter(stateBefore, actions.decrementCounter(firstItemId));
 
-			const stateBefore = {
-				[id00]: {
-					id: id00,
-					count: 0
-				},
-				[id01]: {
-					id: id01,
-					count: 3
-				}
-			};
-			const action = {
-				id: id01,
-				type: TYPE.DECREMENT_MULTI_COUNTER
-			};
-			const expectedResult = {
-				...stateBefore,
-				[action.id]: {
-					...stateBefore[action.id],
-					count: 2
-				}
-			};
-
-			expect(multiCounter(stateBefore, action)).toEqual(expectedResult);
+			expect(actualResult[firstItemId].count).toEqual(stateBefore[firstItemId].count - 1);
 		});
 	});
-
 });

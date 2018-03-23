@@ -57,4 +57,4 @@ const fetchCounterCollection = () => {
 	});
 };
 
-export { MAIN_NAV_ITEMS, fetchCounterCollection };
+export { MAIN_NAV_ITEMS, fetchCounterCollection, mockDataBase };
