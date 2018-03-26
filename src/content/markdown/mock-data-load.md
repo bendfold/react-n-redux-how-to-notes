@@ -19,3 +19,7 @@ Building upon the "Counter Generator Example", we added in:
 - Now that we render the ``CounterList`` within the ``CounterListContainer`` Class. Rather than connecting the ``CounterList`` to the ``CounterListContainer``, this time we connect the ``CounterListContainer`` to itself. Thus making the dispatch and state avilible to the props of the ``CounterListContainer``.
 - The props are then passed ``CounterList`` via the spread opperator inside the render method on the class.
 
+### Extras
+- Middleware redux-logger & redux-promise.
+- Loading Indicator
+

@@ -25,12 +25,19 @@ class CounterListContainer extends Component {
 		});
 	}
 	render() {
-		return <CounterList {...this.props} />
+		const { counterCollection, isFetching } = this.props;
+		if (isFetching && !Object.keys(counterCollection).length) {
+			return <p>Loading Counters...</p>;
+		}
+		return <CounterList counterCollection={counterCollection} />
 	}
 }
 
 const mapStateToProps = (state) => {
-	return {counterCollection: state.counterCollectionB};
+	return {
+		counterCollection: state.counterCollectionB,
+		isFetching: getIsFetching(state)
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {
