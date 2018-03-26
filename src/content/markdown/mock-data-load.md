@@ -1,5 +1,12 @@
 ## Mock Data Load
 
+Building upon the "Counter Generator Example", we added in:
+- A new reducer helper ``createNamedReducer`` to allow us to:
+	- Reuse the existing reducer logic
+	- Name our reducers at the point of creation
+	- Pass in a name prop to the action to allow us to hit the correct part of the state.
+- A new component to handle creating new counter items.
+- A new component to handle displaying the list of counters.
 
 ### How it works
 - We are using the data returned from the API call to populate the part of the state that is consumed by the ``<CounterList />`` component.
@@ -11,3 +18,4 @@
 - When the state is updated the component re-renders and the new state is passed into the ``<CounterList  {...this.props} />`` via the props.
 - Now that we render the ``CounterList`` within the ``CounterListContainer`` Class. Rather than connecting the ``CounterList`` to the ``CounterListContainer``, this time we connect the ``CounterListContainer`` to itself. Thus making the dispatch and state avilible to the props of the ``CounterListContainer``.
 - The props are then passed ``CounterList`` via the spread opperator inside the render method on the class.
+
