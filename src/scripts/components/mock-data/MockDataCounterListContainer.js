@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 // ACTIONS
 import * as actions from '../../actions';
+// REDUCERS
+import { getIsFetching } from '../../reducers';
 // COMPONENTS
 import CounterList from '../counter-generator/CounterList';
 // CONSTANTS
