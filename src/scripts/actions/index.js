@@ -19,10 +19,16 @@ const decrementCounter = (id, name) => {
 };
 
 const createCounter = (name) => {
-	// TODO - ID NEEDS TO GO HERE TO MAKE REDUCER DETERMINISTIC
 	return {
 		type: TYPE.CREATE_COUNTER,
 		id: v4(),
+		name
+	}
+};
+
+const requestCounters = (name) => {
+	return {
+		type: TYPE.REQUEST_COUNTERS,
 		name
 	}
 };
@@ -39,5 +45,6 @@ export {
 	incrementCounter,
 	decrementCounter,
 	createCounter,
-	receiveCounters
+	receiveCounters,
+	requestCounters
 };

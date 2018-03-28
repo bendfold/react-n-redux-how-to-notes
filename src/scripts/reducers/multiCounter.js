@@ -3,7 +3,7 @@ import { combineReducers } from 'redux';
 // CONSTANTS
 import { TYPE } from '../constants';
 
-const multiCounter = (name) => {
+const multiCounter = () => {
 	const counterCollection = (state = {}, action) => {
 		switch (action.type) {
 			case TYPE.RECEIVE_COUNTERS:
@@ -48,7 +48,7 @@ const multiCounter = (name) => {
 		}
 	};
 
-	const isFetching = (state = false, action) => {
+	const isFetching = (state = true, action) => {
 		switch (action.type) {
 			case TYPE.REQUEST_COUNTERS:
 				return true;
@@ -67,63 +67,6 @@ const multiCounter = (name) => {
 };
 
 export default multiCounter;
-/*
-export const multiCounter = (state = {}, action) => {
-	switch (action.type) {
-		case TYPE.RECEIVE_COUNTERS:
-			return {
-				...state,
-				...action.payload
-			};
-		case TYPE.CREATE_COUNTER:
-			return	{
-				...state,
-				[action.id] : {
-					id: action.id,
-					count: 0
-				}
-			};
-		case TYPE.INCREMENT_COUNTER:
-			if (state.hasOwnProperty(action.id)) {
-				return {
-					...state,
-					[action.id]: {
-						...state[action.id],
-						count: state[action.id].count + 1
-					}
-				};
-			} else {
-				return state;
-			}
-		case TYPE.DECREMENT_COUNTER:
-			if (state.hasOwnProperty(action.id)) {
-				return {
-					...state,
-					[action.id]: {
-						...state[action.id],
-						count: state[action.id].count - 1
-					}
-				};
-			} else {
-				return state;
-			}
-		default:
-			return state;
-	}
-}
-*/
-/*
-export isFetching = (start = false) => {
-	switch (action.type) {
-		case TYPE.REQUEST_COUNTERS:
-			return true;
-		case TYPE.RECEIVE_COUNTERS:
-			return false;
-		default:
-			return state;
-	}
-};
-*/
 
 // SELECTORS
 export const getIsFetching = (state) => state.isFetching;

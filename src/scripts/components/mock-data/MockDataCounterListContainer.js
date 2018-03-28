@@ -22,12 +22,16 @@ class CounterListContainer extends Component {
 		this.fetchData();
 	}
 	fetchData() {
+		const {requestCounters} = this.props;
+
 		fetchCounterCollection().then((payload) => {
+			this.props.requestCounters(reducerName);
 			this.props.receiveCounters(payload, reducerName);
 		});
 	}
 	render() {
 		const { counterCollection, isFetching } = this.props;
+
 		if (isFetching && !Object.keys(counterCollection).length) {
 			return <p>Loading Counters...</p>;
 		}
@@ -37,8 +41,8 @@ class CounterListContainer extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		counterCollection: state.counterCollectionB,
-		isFetching: getIsFetching(state)
+		counterCollection: state.counterCollectionB.counterCollection,
+		isFetching: getIsFetching(state.counterCollectionB)
 	};
 };
 
@@ -52,6 +56,9 @@ const mapDispatchToProps = (dispatch) => {
 		},
 		receiveCounters: (payload, name) => {
 			dispatch(actions.receiveCounters(payload, name));
+		},
+		requestCounters: (name) => {
+			dispatch(actions.requestCounters(name));
 		}
 	};
 };
