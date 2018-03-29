@@ -3,6 +3,8 @@ import { combineReducers } from 'redux';
 // CONSTANTS
 import { TYPE } from '../constants';
 
+let multiCounterReducers = {};
+
 const multiCounter = () => {
 	const counterCollection = (state = {}, action) => {
 		switch (action.type) {
@@ -59,12 +61,16 @@ const multiCounter = () => {
 		}
 	};
 
-	return combineReducers({
+	export multiCounterReducers = {
 		counterCollection,
 		isFetching
-	});
+	};
+
+	return combineReducers(multiCounterReducers);
 
 };
+
+// export multiCounterReducers;
 
 export default multiCounter;
 
