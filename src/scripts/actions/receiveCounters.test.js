@@ -6,7 +6,7 @@ describe('ACTIONS', () => {
 		
 		const actualResult = receiveCounters();
 
-		it('should create an action that creates a new counter', () => {
+		it('should create an action object', () => {
 			expect(typeof actualResult).toEqual('object');
 		});
 		it('should contain the keys "name", "payload" and "type"', () => {
