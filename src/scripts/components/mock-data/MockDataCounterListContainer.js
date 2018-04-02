@@ -35,7 +35,7 @@ class CounterListContainer extends Component {
 		if (isFetching && !Object.keys(counterCollection).length) {
 			return <p>Loading Counters...</p>;
 		}
-		return <CounterList counterCollection={counterCollection} />
+		return <CounterList counterCollection={counterCollection} {...this.props}  />
 	}
 }
 

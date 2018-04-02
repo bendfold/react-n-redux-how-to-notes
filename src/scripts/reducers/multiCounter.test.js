@@ -1,5 +1,5 @@
 // REDUCER
-import { multiCounterReducers } from './multiCounter';
+import { getMultiCounterReducers } from './multiCounter';
 // CONSTANTS
 import { TYPE } from '../constants/index';
 // ACTIONS
@@ -11,82 +11,88 @@ import { v4 } from 'uuid';
 
 describe('REDUCERS', () => {
 
-	console.log('multiCounterReducers ', multiCounterReducers.counterCollection);
+	// console.log('multiCounter ', getMultiCounterReducers().counterCollection );
 
-	// describe('Receive counters', () => {
-	// 	it('Should decrement the counter relative to the supplied ID', () => {
-	// 		const stateBefore = {};
-	// 		const actualResult = multiCounter().counterCollection(stateBefore, actions.receiveCounters(mockDataBase));
+	describe('Receive counters', () => {
+		it('Should take in a counters object from the API call and add it to the current state.', () => {
+			const stateBefore = {};
+			const actualResult = getMultiCounterReducers().counterCollection(stateBefore, actions.receiveCounters(mockDataBase));
 
-	// 		expect(actualResult).toEqual(mockDataBase);
-	// 	});
-	// });
-	// describe('Create counter', () => {
-	// 	const stateBefore = {};
-	// 	const actualResult = multiCounter(stateBefore, actions.createCounter());
+			expect(actualResult).toEqual(mockDataBase);
+		});
+	});
+	describe('Create counter', () => {
+		const stateBefore = {};
+		// const actualResult = multiCounter(stateBefore, actions.createCounter());
+		const actualResult = getMultiCounterReducers().counterCollection(stateBefore, actions.createCounter());
 
-	// 	it('Should create a new counter object and add it to the state.', () => {
-	// 		expect(typeof actualResult).toEqual('object');
-	// 	});
+/* 		console.log('getMultiCounterReducers ', getMultiCounterReducers.counterCollection(stateBefore, actions.createCounter())); */
 
-	// 	it('Should contain an object with the keys, "count" and "id".', () => {
-	// 		const expectedResult = ['count', 'id'].sort();
-	// 		const resultId = Object.keys(actualResult)[0];
+		it('Should create a new counter object and add it to the state.', () => {
+			expect(typeof actualResult).toEqual('object');
+		});
 
-	// 		expect(Object.keys(actualResult[resultId]).sort()).toEqual(expectedResult);
-	// 	});
+		it('Should contain an object with the keys, "count" and "id".', () => {
+			const expectedResult = ['count', 'id'].sort();
+			const resultId = Object.keys(actualResult)[0];
 
-	// 	it('Should have a "count" property set to 0.', () => {
-	// 		const resultId = Object.keys(actualResult)[0];
+			expect(Object.keys(actualResult[resultId]).sort()).toEqual(expectedResult);
+		});
 
-	// 		expect(actualResult[resultId].count).toEqual(0);
-	// 	});
+		it('Should have a "count" property set to 0.', () => {
+			const resultId = Object.keys(actualResult)[0];
 
-	// 	it('Should add a new counter object along side existing counter objects in the state.', () => {
-	// 		const stateBeforeId = v4();
-	// 		const stateBefore = {
-	// 					[stateBeforeId] : {
-	// 						id: stateBeforeId,
-	// 						count: 0
-	// 					}
-	// 				};
+			expect(actualResult[resultId].count).toEqual(0);
+		});
 
-	// 		const actualResult = multiCounter(stateBefore, { type: TYPE.CREATE_COUNTER });
-	// 		const resultKeys = Object.keys(actualResult);
+		it('Should add a new counter object along side existing counter objects in the state.', () => {
+			const stateBeforeId = v4();
+			const stateBefore = {
+						[stateBeforeId] : {
+							id: stateBeforeId,
+							count: 0
+						}
+					};
 
-	// 		expect(resultKeys.length).toEqual(2);
+			const actualResult = getMultiCounterReducers().counterCollection(stateBefore, { type: TYPE.CREATE_COUNTER });
+			const resultKeys = Object.keys(actualResult);
 
-	// 	});
-	// });
-	// describe('Multi counter increment', () => {
-	// 	it('Should increment the counter relative to the supplied ID', () => {
-	// 		const stateBefore = multiCounter(stateBefore, actions.receiveCounters(mockDataBase));
-	// 		const firstItemKey = Object.keys(stateBefore)[0];
-	// 		const firstItemId = stateBefore[firstItemKey].id;
-	// 		const actualResult = multiCounter(stateBefore, actions.incrementCounter(firstItemId));
+			expect(resultKeys.length).toEqual(2);
 
-	// 		expect(actualResult[firstItemId].count).toEqual(stateBefore[firstItemId].count + 1);
-	// 	});
-	// });
-	// describe('Multi counter decrement', () => {
-	// 	it('Should decrement the counter relative to the supplied ID', () => {
-	// 		const stateBefore = multiCounter(stateBefore, actions.receiveCounters(mockDataBase));
-	// 		const firstItemKey = Object.keys(stateBefore)[0];
-	// 		const firstItemId = stateBefore[firstItemKey].id;
-	// 		const actualResult = multiCounter(stateBefore, actions.decrementCounter(firstItemId));
+		});
+	});
+	describe('Multi counter increment', () => {
+		it('Should increment the counter relative to the supplied ID', () => {
+			const stateBefore = getMultiCounterReducers().counterCollection(stateBefore, actions.receiveCounters(mockDataBase));
+			const firstItemKey = Object.keys(stateBefore)[0];
+			const firstItemId = stateBefore[firstItemKey].id;
+			const actualResult = getMultiCounterReducers().counterCollection(stateBefore, actions.incrementCounter(firstItemId));
 
-	// 		expect(actualResult[firstItemId].count).toEqual(stateBefore[firstItemId].count - 1);
-	// 	});
-	// });
-	// describe('isFetching', () => {
-	// 	it('Should be set to true when the action type is REQUEST_COUNTERS', () => {
-	// 		const stateBefore = false;
-	// 		const actualResult = multiCounter(stateBefore, actions.requestCounters());
+			expect(actualResult[firstItemId].count).toEqual(stateBefore[firstItemId].count + 1);
+		});
+	});
+	describe('Multi counter decrement', () => {
+		it('Should decrement the counter relative to the supplied ID', () => {
+			const stateBefore = getMultiCounterReducers().counterCollection(stateBefore, actions.receiveCounters(mockDataBase));
+			const firstItemKey = Object.keys(stateBefore)[0];
+			const firstItemId = stateBefore[firstItemKey].id;
+			const actualResult = getMultiCounterReducers().counterCollection(stateBefore, actions.decrementCounter(firstItemId));
 
-	// 		expect(actualResult.isFetching).toEqual(true);
-	// 	});
-	// 	it('Should be set to false when the action type is RECEIVE_COUNTERS', () => {
-			
-	// 	});
-	// });
+			expect(actualResult[firstItemId].count).toEqual(stateBefore[firstItemId].count - 1);
+		});
+	});
+	describe('isFetching', () => {
+		it('Should be set to true when the action type is REQUEST_COUNTERS', () => {
+			const stateBefore = false;
+			const actualResult = getMultiCounterReducers().isFetching(stateBefore, actions.requestCounters());
+
+			expect(actualResult).toEqual(true);
+		});
+		it('Should be set to false when the action type is RECEIVE_COUNTERS', () => {
+			const stateBefore = true;
+			const actualResult = getMultiCounterReducers().isFetching(stateBefore, actions.receiveCounters());
+
+			expect(actualResult).toEqual(false);
+		});
+	});
 });

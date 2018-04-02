@@ -3,74 +3,71 @@ import { combineReducers } from 'redux';
 // CONSTANTS
 import { TYPE } from '../constants';
 
-let multiCounterReducers = {};
-
-const multiCounter = () => {
-	const counterCollection = (state = {}, action) => {
-		switch (action.type) {
-			case TYPE.RECEIVE_COUNTERS:
+const counterCollection = (state = {}, action) => {
+	switch (action.type) {
+		case TYPE.RECEIVE_COUNTERS:
+			return {
+				...state,
+				...action.payload
+			};
+		case TYPE.CREATE_COUNTER:
+			return {
+				...state,
+				[action.id]: {
+					id: action.id,
+					count: 0
+				}
+			};
+		case TYPE.INCREMENT_COUNTER:
+			if (state.hasOwnProperty(action.id)) {
 				return {
 					...state,
-					...action.payload
-				};
-			case TYPE.CREATE_COUNTER:
-				return	{
-					...state,
-					[action.id] : {
-						id: action.id,
-						count: 0
+					[action.id]: {
+						...state[action.id],
+						count: state[action.id].count + 1
 					}
 				};
-			case TYPE.INCREMENT_COUNTER:
-				if (state.hasOwnProperty(action.id)) {
-					return {
-						...state,
-						[action.id]: {
-							...state[action.id],
-							count: state[action.id].count + 1
-						}
-					};
-				} else {
-					return state;
-				}
-			case TYPE.DECREMENT_COUNTER:
-				if (state.hasOwnProperty(action.id)) {
-					return {
-						...state,
-						[action.id]: {
-							...state[action.id],
-							count: state[action.id].count - 1
-						}
-					};
-				} else {
-					return state;
-				}
-			default:
+			} else {
 				return state;
-		}
-	};
-
-	const isFetching = (state = true, action) => {
-		switch (action.type) {
-			case TYPE.REQUEST_COUNTERS:
-				return true;
-			case TYPE.RECEIVE_COUNTERS:
-				return false;
-			default:
+			}
+		case TYPE.DECREMENT_COUNTER:
+			if (state.hasOwnProperty(action.id)) {
+				return {
+					...state,
+					[action.id]: {
+						...state[action.id],
+						count: state[action.id].count - 1
+					}
+				};
+			} else {
 				return state;
-		}
-	};
+			}
+		default:
+			return state;
+	}
+};
 
-	export multiCounterReducers = {
+const isFetching = (state = true, action) => {
+	switch (action.type) {
+		case TYPE.REQUEST_COUNTERS:
+			return true;
+		case TYPE.RECEIVE_COUNTERS:
+			return false;
+		default:
+			return state;
+	}
+};
+
+export const getMultiCounterReducers = () => {
+	return {
 		counterCollection,
 		isFetching
 	};
-
-	return combineReducers(multiCounterReducers);
-
 };
 
-// export multiCounterReducers;
+const multiCounter = () => {
+	return combineReducers(getMultiCounterReducers());
+};
 
 export default multiCounter;
 
