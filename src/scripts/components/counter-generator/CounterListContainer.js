@@ -3,6 +3,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 // ACTIONS
 import * as actions from '../../actions';
+// REDUCERS
+import { getIsFetching } from '../../reducers';
 // COMPONENTS
 import CounterList from './CounterList';
 // CONSTANTS
@@ -11,7 +13,10 @@ import { TYPE, REDUCER_NAME } from '../../constants';
 const reducerName = REDUCER_NAME.A;
 
 const mapStateToProps = (state) => {
-	return {counterCollection: state.counterCollectionA};
+	return {
+		counterCollection: state.counterCollectionA.counterCollection,
+		isFetching: getIsFetching(state.counterCollectionA)
+	};
 };
 
 const mapDispatchToProps = (dispatch) => {

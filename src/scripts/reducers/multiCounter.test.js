@@ -10,9 +10,6 @@ import { mockDataBase } from '../api';
 import { v4 } from 'uuid';
 
 describe('REDUCERS', () => {
-
-	// console.log('multiCounter ', getMultiCounterReducers().counterCollection );
-
 	describe('Receive counters', () => {
 		it('Should take in a counters object from the API call and add it to the current state.', () => {
 			const stateBefore = {};
@@ -23,10 +20,7 @@ describe('REDUCERS', () => {
 	});
 	describe('Create counter', () => {
 		const stateBefore = {};
-		// const actualResult = multiCounter(stateBefore, actions.createCounter());
 		const actualResult = getMultiCounterReducers().counterCollection(stateBefore, actions.createCounter());
-
-/* 		console.log('getMultiCounterReducers ', getMultiCounterReducers.counterCollection(stateBefore, actions.createCounter())); */
 
 		it('Should create a new counter object and add it to the state.', () => {
 			expect(typeof actualResult).toEqual('object');
