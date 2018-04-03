@@ -20,6 +20,49 @@ Building upon the "Counter Generator Example", we added in:
 - The props are then passed ``CounterList`` via the spread opperator inside the render method on the class.
 
 ### Extras
-- Middleware redux-logger & redux-promise.
-- Loading Indicator
+#### Middleware ``redux-logger``.
+We added a piece of middleware called ``redux-logger`` to help us track the state as the user interacts with the application. We added it in the ``configureStore.js`` file, and set it to only kick in on the dev in environment so as not to polute the console on production. The steps were as follows:
+
+- Pull in createLogger like this, ``import { createLogger } from 'redux-logger';``
+- Within the ``configureStore`` method we create an empty array to hold any middleware we wish to add. ``const middlewares = [];``
+- We check the environment var, if it is not production, we push the ``createLogger`` method to the ``middlewares`` array.
+- The ``middlewares`` array can now be added to the store using the Redux ``applyMiddleware`` method, within the Redux ``createStore`` method as the last argument, like so: 
+	
+		return createStore(
+			rootReducer,
+			applyMiddleware(...middlewares)
+		);
+
+## Loading Indicator - (Selector example)
+In order to demonstrate how selectors work I added a check to see if the application is fetching data and show a loading message while this is happening.
+
+#### What?
+- A selector is a function that takes in a state object and returns some data that can be used with a component.
+- This could be a simple boolean or something more complex like a filtered set of data from a large collection.
+- As Dan Abramov put it:
+	- Reducer: “How does my state change over time”?
+	- Selectors: “How do other modules make sense of my state?”
+
+#### Why?
+- It avoid duplicating data in the store and therefore simplifies maintaince of parts of the state.
+- They off load data transformations from the component so that the component remains decoupled from the data thus keeping the component generic and re-usable.
+
+#### How?
+- It selectors should live with the reducer that they are checking for [these reasons](https://twitter.com/dan_abramov/status/730933179511640064?lang=de) from Dan Abramov:
+	- Colocating reducers with selectors turns out to be a much more important topic in my new course than I previously realized.
+	- It is the only reason I manage to change the state shape drastically over the lessons without touching the components even once.
+	- As soon as I move reducer into its own file, no code outside of that file may depend on its state shape. Works wonders for refactorings.
+	- Even selectors that operate on the parent state shouldn’t depend on the child state shape. Selector composition mirrors reducer composition.
+	- Selectors are not just a perf thing. They don’t *have to* be memoized like Reselect. They can be regular functions calling each other.
+	- Reducer: “How does my state change over time”? Selectors: “How do other modules make sense of my state?”
+
+
+#### Extra Info
+- Using selectors calls ``mapStateToProps`` a fair bit, which could be a performance hit. So in a larger app it would make sense to look at using something like [reselect](https://github.com/reactjs/reselect).
+- Redux docs on [Selectors](https://redux.js.org/docs/recipes/ComputingDerivedData).
+- Useful articles on Selectors:
+	- [saltycrane](https://www.saltycrane.com/blog/2017/05/what-are-redux-selectors-why-use-them/)
+
+#### How does this example work & what changes were made?
+
 
