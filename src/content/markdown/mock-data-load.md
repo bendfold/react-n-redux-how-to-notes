@@ -63,6 +63,29 @@ In order to demonstrate how selectors work I added a check to see if the applica
 - Useful articles on Selectors:
 	- [saltycrane](https://www.saltycrane.com/blog/2017/05/what-are-redux-selectors-why-use-them/)
 
-#### How does this example work & what changes were made?
+#### What changes were made?
+- The shape of the ``multiCounter.js`` file changed quite a bit to enable us to add the new selector, whilst keeping the reducers within testable.
+- ``multiCounter.js`` now looks like this
+	- A parent wrapper function called ``multiCounter``, this bundles up the sub-reducers using Redux ``combineReducers`` and returns the result.
+	- There are two sub-reducers ``counterCollection`` (The list of counters) & ``isFetching`` a boolean which is toggled based on the state of the API call.
+	- ``getMultiCounterReducers`` is a method what we use to:
+		- Pull the sub-reducers into the ``combineReducers`` method.
+		- Expose the sub-reducers to the test suite.
+	- I co-located the selector ``getIsFetching`` within this file for all the reason mentioned in the intro.
 
+- As we changed the shape of the multiCounter reducer to include the selector functionality above, we needed to alter the tests and display level component to work with the new shape of the state object.
 
+- We now also fire off two actions as the component loads up.
+	- First we fire off the ``REQUEST_COUNTERS`` action, which triggers the isFetching flag on the state to true.
+	- Then, once the request returns the data, we fire the ``RECEIVE_COUNTERS`` action. This action is picked up in two different reducers within the parent ``multiCounter`` reducer.
+		- In the ``counterCollection`` reducer it adds the payload to the current state.
+		- In the ``isFetching`` reducer it.
+
+#### How does this example work?
+- The ``isFetching`` flag is toggled using the action sequence mentioned in the last section. To make this happen, within async callback inside of ``MockDataCounterListContainer.js``'s ``fetchData`` method, we do the following.
+		
+		this.props.requestCounters(reducerName);
+		this.props.receiveCounters(payload, reducerName);
+
+- Within the ``render`` function of ``MockDataCounterListContainer.js`` we perform a check for the ``isFetching`` state, this determines whether or not we show the loading message.
+- The ``isFetching`` flag is set in the ``mapStateToProps`` via the selector ``isFetching: getIsFetching(state.counterCollectionB)``.
