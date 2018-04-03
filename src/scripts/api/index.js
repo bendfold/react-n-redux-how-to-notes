@@ -24,6 +24,11 @@ const MAIN_NAV_ITEMS = [
 		link: ROUTE_PATH.mockDataLoad,
 		id: uuidv4()
 	},
+	{
+		label: 'Selectors',
+		link: ROUTE_PATH.selectors,
+		id: uuidv4()
+	}
 ];
 
 const mockDataBase = {
