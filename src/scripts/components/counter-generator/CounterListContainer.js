@@ -10,21 +10,20 @@ import CounterList from './CounterList';
 // CONSTANTS
 import { TYPE, REDUCER_NAME } from '../../constants';
 
-const reducerName = REDUCER_NAME.A;
-
 const mapStateToProps = (state) => {
 	return {
 		counterCollection: state.counterCollectionA.counterCollection,
-		isFetching: getIsFetching(state.counterCollectionA)
+		isFetching: getIsFetching(state.counterCollectionA),
+		reducerName: REDUCER_NAME.A
 	};
 };
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		onUpClick: (id) => {
+		onUpClick: (id, reducerName) => {
 			dispatch(actions.incrementCounter(id, reducerName));
 		},
-		onDownClick: (id) => {
+		onDownClick: (id, reducerName) => {
 			dispatch(actions.decrementCounter(id, reducerName));
 		},
 	};

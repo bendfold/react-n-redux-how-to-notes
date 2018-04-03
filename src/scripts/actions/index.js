@@ -1,6 +1,8 @@
 import { TYPE } from '../constants/index';
 // LIBS
 import { v4 } from 'uuid';
+// API
+import * as api from '../api';
 
 const incrementCounter = (id, name) => {
 	return {
@@ -41,10 +43,16 @@ const receiveCounters = (payload, name) => {
 	}
 };
 
+const fetchCounters = (reducerName) => {
+	return api.fetchCounterCollection().then((payload) => {
+		return receiveCounters(payload, reducerName);
+	});
+};
+
 export {
 	incrementCounter,
 	decrementCounter,
 	createCounter,
-	receiveCounters,
+	fetchCounters,
 	requestCounters
 };

@@ -6,7 +6,8 @@ import { CLASSNAME } from '../../constants';
 const CounterList = ({
 	counterCollection,
 	onUpClick,
-	onDownClick
+	onDownClick,
+	reducerName
 }) => {
 	return (<ul>
 			{
@@ -19,12 +20,12 @@ const CounterList = ({
 								<p>Count: {counter.count}</p>
 								<ul>
 									<li>
-										<button onClick={() => (onUpClick(counter.id))}>
+										<button onClick={() => (onUpClick(counter.id, reducerName))}>
 											Up
 										</button>
 									</li>
 									<li>
-										<button onClick={() => (onDownClick(counter.id))}>
+										<button onClick={() => (onDownClick(counter.id, reducerName))}>
 											Down
 										</button>
 									</li>

@@ -1,5 +1,5 @@
 
-## Loading Indicator - (Selector example)
+## Loading Indicator
 In order to demonstrate how selectors work I added a check to see if the application is fetching data and show a loading message while this is happening. This can be seen on the ["Loading data from an API"](/mock-data-load) page. But there was quite a bit of change so to make the info easier to read I moved the selector part to this route.
 
 #### What?

@@ -8,27 +8,45 @@ Building upon the "Counter Generator Example", we added in:
 - A new component to handle creating new counter items.
 - A new component to handle displaying the list of counters.
 
-### How it works
-- We are using the data returned from the API call to populate the part of the state that is consumed by the ``<CounterList />`` component.
+### What changed?
 - We want to make the call to the API within a life-cycle hook. As a result we converted the component from a stateless functional component into a class based one.
-- We fetch the data within the ``componentDidMount`` life-cycle hook.
-- Once the data is returned to us we pass it into the ``receiveCounters`` method which is assigned on the ``mapDispatchToProps``.
-- This method in turn dispatches the ``receiveCounters`` action, into which we pass the payload.
-- The action is picked up in the reducer and the payload is merged into the current state of the counter collection.
-- When the state is updated the component re-renders and the new state is passed into the ``<CounterList  {...this.props} />`` via the props.
-- Now that we render the ``CounterList`` within the ``CounterListContainer`` Class. Rather than connecting the ``CounterList`` to the ``CounterListContainer``, this time we connect the ``CounterListContainer`` to itself. Thus making the dispatch and state avilible to the props of the ``CounterListContainer``.
-- The props are then passed ``CounterList`` via the spread opperator inside the render method on the class.
+- We export a new action called ``fetchCounters`` which just takes the reducer name the correct reducer is effected, this returns a promise into which we pass the ``receiveCounters`` method.
+- We made an internal action named ``receiveCounters`` which handles adding the payload to the state.
+- We replaced the ``mapDispatchToProps`` with the ``actions`` export as the ``mapDispatchToProps`` was only passing through the action to the component.
+- As we replaced the ``mapDispatchToProps`` with actions in the ``connect`` method, I now destructure the actions from the props and pass them in as props on the ``<CounterList />``.
+- We pass the reducerName in as a prop so that the method on the display component can pass it into its methods.
+- We added a loading counter, but the explination of this is [over here](/selectors).
+- We added a ``fetchData`` method within the ``CounterListContainer`` class.
+- Now that we render the ``CounterList`` within the ``CounterListContainer`` Class. Rather than connecting the ``CounterList`` to the ``CounterListContainer``, this time we connect the ``CounterListContainer`` to itself. Thus making the dispatch and state availible to the props of the ``CounterListContainer``.
 
-### Extras
-#### Middleware ``redux-logger``.
+
+### How it works
+- Within the ``componentDidMount`` method of ``CounterListContainer`` class we call ``fetchData`` which makes the call to the ``fetchCounters`` action;
+- The ``fetchCounters`` action makes an async call to the API which returns a promise.
+- Within the ``.then`` of the promise the ``receiveCounters`` action takes in the payload and reducerName and dispatches these out to the reducers.
+- The ``receiveCounters`` action is picked up in the reducer and the payload is merged into the current state of the counter collection.
+- When the state is updated the component re-renders and the new state is passed into the ``<CounterList  {...this.props} />`` via the props.
+- The received payload is now the counterCollection on the state, and we can add to this using the UI.
+
+### Extras // Middleware 
+
+#### ``redux-logger``:
 We added a piece of middleware called ``redux-logger`` to help us track the state as the user interacts with the application. We added it in the ``configureStore.js`` file, and set it to only kick in on the dev in environment so as not to polute the console on production. The steps were as follows:
 
 - Pull in createLogger like this, ``import { createLogger } from 'redux-logger';``
 - Within the ``configureStore`` method we create an empty array to hold any middleware we wish to add. ``const middlewares = [];``
 - We check the environment var, if it is not production, we push the ``createLogger`` method to the ``middlewares`` array.
 - The ``middlewares`` array can now be added to the store using the Redux ``applyMiddleware`` method, within the Redux ``createStore`` method as the last argument, like so: 
-	
+
 		return createStore(
 			rootReducer,
 			applyMiddleware(...middlewares)
 		);
+
+- Note that ``applyMiddleware`` is known as an enhancer and must be supplied as the final argument. ``createStore`` can also take a persited state, so if you want that in there too then you must supply it before the ``applyMiddleware`` method.
+
+#### ``redux-promise``:
+Due to the fact that we now make the async call from within the actions file we needed to enable the dispatch to handle async promise behaviour. To do this I added a piece of middleware called ``redux-promise``. What is under the hood of this middleware is explained [here](https://egghead.io/lessons/javascript-redux-wrapping-dispatch-to-recognize-promises).
+
+
+

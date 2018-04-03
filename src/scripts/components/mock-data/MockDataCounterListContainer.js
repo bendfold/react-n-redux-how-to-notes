@@ -22,51 +22,33 @@ class CounterListContainer extends Component {
 		this.fetchData();
 	}
 	fetchData() {
-		const {requestCounters} = this.props;
+		const {requestCounters, fetchCounters} = this.props;
 
-		fetchCounterCollection().then((payload) => {
-			this.props.requestCounters(reducerName);
-			this.props.receiveCounters(payload, reducerName);
-		});
+		requestCounters(reducerName);
+		fetchCounters(reducerName); // Promise wrapped dispatch
 	}
 	render() {
-		const { counterCollection, isFetching } = this.props;
+		const { counterCollection, isFetching, incrementCounter, decrementCounter } = this.props;
 
 		if (isFetching && !Object.keys(counterCollection).length) {
 			return <p>Loading Counters...</p>;
 		}
-		return <CounterList counterCollection={counterCollection} {...this.props}  />
+		return <CounterList onUpClick={incrementCounter} onDownClick={decrementCounter} {...this.props} />
 	}
 }
 
 const mapStateToProps = (state) => {
 	return {
 		counterCollection: state.counterCollectionB.counterCollection,
-		isFetching: getIsFetching(state.counterCollectionB)
-	};
-};
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		onUpClick: (id) => {
-			dispatch(actions.incrementCounter(id, reducerName));
-		},
-		onDownClick: (id) => {
-			dispatch(actions.decrementCounter(id, reducerName));
-		},
-		receiveCounters: (payload, name) => {
-			dispatch(actions.receiveCounters(payload, name));
-		},
-		requestCounters: (name) => {
-			dispatch(actions.requestCounters(name));
-		}
+		isFetching: getIsFetching(state.counterCollectionB),
+		reducerName
 	};
 };
 
 // Passing in Redux shitniz to the component, by connecting them to itself.
 CounterListContainer = connect(
 	mapStateToProps,
-	mapDispatchToProps
+	actions
 )(CounterListContainer);
 
 export default CounterListContainer;
