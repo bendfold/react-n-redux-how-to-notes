@@ -28,6 +28,11 @@ const MAIN_NAV_ITEMS = [
 		label: 'Selectors',
 		link: ROUTE_PATH.selectors,
 		id: uuidv4()
+	},
+	{
+		label: 'Thunks',
+		link: ROUTE_PATH.thunks,
+		id: uuidv4()
 	}
 ];
 

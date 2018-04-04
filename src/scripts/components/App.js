@@ -9,7 +9,8 @@ import BasicCounterContainer from './basic-counter/BasicCounterContainer';
 import AddingReactRouterContainer from './add-react-router/AddingReactRouterContainer';
 import CounterGeneratorContainer from './counter-generator/CounterGeneratorContainer';
 import mockDataLoadContainer from './mock-data/mockDataLoadContainer';
-import selectors from './selectors/selectorsContainer'
+import selectors from './selectors/selectorsContainer';
+import thunks from './thunks/thunksContainer';
 import NoMatch from './no-match/NoMatch';
 // CONSTANTS
 import { ROUTE_PATH } from '../constants';
@@ -22,6 +23,7 @@ const App = () => ([
 		<Route key={uuidv4()} path={ROUTE_PATH.counterGenerator} component={CounterGeneratorContainer} />
 		<Route key={uuidv4()} path={ROUTE_PATH.mockDataLoad} component={mockDataLoadContainer} />
 		<Route key={uuidv4()} path={ROUTE_PATH.selectors} component={selectors} />
+		<Route key={uuidv4()} path={ROUTE_PATH.thunks} component={thunks} />
 		<Route key={uuidv4()} exact path='/' render={() => (
 			<Redirect
 				exact

@@ -21,7 +21,8 @@ const ROUTE_PATH = {
 	addingReactRouter: '/adding-react-router',
 	counterGenerator: '/counter-generator',
 	mockDataLoad: '/mock-data-load',
-	selectors: '/selectors'
+	selectors: '/selectors',
+	thunks: '/thunks'
 };
 
 const REDUCER_NAME = {

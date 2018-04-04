@@ -3,8 +3,10 @@ import { TYPE } from '../constants/index';
 import { v4 } from 'uuid';
 // API
 import * as api from '../api';
+// REDUCERS
+import { getIsFetching } from '../reducers';
 
-const incrementCounter = (id, name) => {
+export const incrementCounter = (id, name) => {
 	return {
 		type: TYPE.INCREMENT_COUNTER,
 		name,
@@ -12,7 +14,7 @@ const incrementCounter = (id, name) => {
 	}
 };
 
-const decrementCounter = (id, name) => {
+export const decrementCounter = (id, name) => {
 	return {
 		type: TYPE.DECREMENT_COUNTER,
 		name,
@@ -20,7 +22,7 @@ const decrementCounter = (id, name) => {
 	}
 };
 
-const createCounter = (name) => {
+export const createCounter = (name) => {
 	return {
 		type: TYPE.CREATE_COUNTER,
 		id: v4(),
@@ -43,16 +45,16 @@ const receiveCounters = (payload, name) => {
 	}
 };
 
-const fetchCounters = (reducerName) => {
-	return api.fetchCounterCollection().then((payload) => {
-		return receiveCounters(payload, reducerName);
-	});
-};
+export const fetchCounters = (reducerName) => (dispatch, getState) => {
+	/* 
+		---- TODO ----
+		If this can be fired from user interaction you need to add a 
+		check in for isFetching to block extra network requests, 
+		like this - https://goo.gl/FUTqgS
+	*/
+	dispatch( requestCounters(reducerName) );
 
-export {
-	incrementCounter,
-	decrementCounter,
-	createCounter,
-	fetchCounters,
-	requestCounters
+	return api.fetchCounterCollection().then((payload) => {
+		dispatch( receiveCounters(payload, reducerName) );
+	});
 };

@@ -24,8 +24,8 @@ class CounterListContainer extends Component {
 	fetchData() {
 		const {requestCounters, fetchCounters} = this.props;
 
-		requestCounters(reducerName);
-		fetchCounters(reducerName); // Promise wrapped dispatch
+		// requestCounters(reducerName);
+		fetchCounters(reducerName); // Thunk based async dispatch calls.
 	}
 	render() {
 		const { counterCollection, isFetching, incrementCounter, decrementCounter } = this.props;
