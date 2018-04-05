@@ -22,6 +22,7 @@ const ROUTE_PATH = {
 	counterGenerator: '/counter-generator',
 	mockDataLoad: '/mock-data-load',
 	selectors: '/selectors',
+	serverInteraction: '/server-interaction',
 	thunks: '/thunks'
 };
 

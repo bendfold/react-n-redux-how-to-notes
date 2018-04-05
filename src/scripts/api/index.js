@@ -3,7 +3,9 @@ import uuidv4 from 'uuid/v4';
 // CONSTANTS
 import { ROUTE_PATH } from '../constants';
 
-const MAIN_NAV_ITEMS = [
+const delay = (ms) => ( new Promise(resolve => setTimeout(resolve, ms)) );
+
+export const MAIN_NAV_ITEMS = [
 	{
 		label: 'Basic Counter',
 		link: ROUTE_PATH.basicCounter,
@@ -33,10 +35,15 @@ const MAIN_NAV_ITEMS = [
 		label: 'Thunks',
 		link: ROUTE_PATH.thunks,
 		id: uuidv4()
+	},
+	{
+		label: 'Server Interaction',
+		link: ROUTE_PATH.serverInteraction,
+		id: uuidv4()
 	}
 ];
 
-const mockDataBase = {
+export let mockDataBase = {
 	"cbaa3e6d-3dc8-4f33-84d3-e64c30f1496e": {
 		"id": "cbaa3e6d-3dc8-4f33-84d3-e64c30f1496e",
 		"count": 5
@@ -59,12 +66,35 @@ const mockDataBase = {
 	}
 };
 
-const delay = (ms) => ( new Promise(resolve => setTimeout(resolve, ms)) );
-
-const fetchCounterCollection = () => {
+export const fetchCounterCollection = () => {
 	return delay(500).then(() => {
 		return mockDataBase;
 	});
 };
 
-export { MAIN_NAV_ITEMS, fetchCounterCollection, mockDataBase };
+export const addCounter = () => {
+	delay(500).then(() => {
+
+		console.log('addCounter fired');
+		
+		// const newCounterID = uuidv4();
+		// const newCounter = {
+		// 		[newCounterID]: {
+		// 			id: newCounterID,
+		// 			count: 0
+		// 		}
+		// 	};
+		// const newMockDataBase = Object.assign(mockDataBase, newCounter);
+		// mockDataBase = newMockDataBase;
+
+		// return newCounter;
+	});
+};
+
+export const removeCounter = (id) => {
+	delay(500).then(() => {
+
+		console.log('removeCounter fired');
+
+	});
+};

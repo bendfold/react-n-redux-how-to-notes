@@ -11,6 +11,7 @@ import CounterGeneratorContainer from './counter-generator/CounterGeneratorConta
 import mockDataLoadContainer from './mock-data/mockDataLoadContainer';
 import selectors from './selectors/selectorsContainer';
 import thunks from './thunks/thunksContainer';
+import serverInteraction from './server-interaction/serverInteractionContainer';
 import NoMatch from './no-match/NoMatch';
 // CONSTANTS
 import { ROUTE_PATH } from '../constants';
@@ -24,6 +25,7 @@ const App = () => ([
 		<Route key={uuidv4()} path={ROUTE_PATH.mockDataLoad} component={mockDataLoadContainer} />
 		<Route key={uuidv4()} path={ROUTE_PATH.selectors} component={selectors} />
 		<Route key={uuidv4()} path={ROUTE_PATH.thunks} component={thunks} />
+		<Route key={uuidv4()} path={ROUTE_PATH.serverInteraction} component={serverInteraction} />
 		<Route key={uuidv4()} exact path='/' render={() => (
 			<Redirect
 				exact
