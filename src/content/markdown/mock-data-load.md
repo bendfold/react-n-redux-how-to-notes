@@ -45,7 +45,12 @@ We added a piece of middleware called ``redux-logger`` to help us track the stat
 
 - Note that ``applyMiddleware`` is known as an enhancer and must be supplied as the final argument. ``createStore`` can also take a persited state, so if you want that in there too then you must supply it before the ``applyMiddleware`` method.
 
+#### ``redux-thunk``:
+The dual requestCounters & fetchCounters dispatch calls was a little clumbsy, so I added the thunk middleware to demo how this call all be wrapped up on one method.
+See [here](/thunks) for details.
+
 #### ``redux-promise``:
+##### NO LONGER DOING THIS BUT LEAVING IT HERE FOR REFERENCE AS THUNKS CAN SOMETIMES BE OVERKILL
 Due to the fact that we now make the async call from within the actions file we needed to enable the dispatch to handle async promise behaviour. To do this I added a piece of middleware called ``redux-promise``. What is under the hood of this middleware is explained [here](https://egghead.io/lessons/javascript-redux-wrapping-dispatch-to-recognize-promises).
 
 
