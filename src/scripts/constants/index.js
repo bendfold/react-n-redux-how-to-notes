@@ -17,8 +17,9 @@ const TYPE = {
 };
 
 const ROUTE_PATH = {
-	basicCounter: '/basic-counter',
 	addingReactRouter: '/adding-react-router',
+	basicCounter: '/basic-counter',
+	errorHandling: '/error-handling',
 	counterGenerator: '/counter-generator',
 	mockDataLoad: '/mock-data-load',
 	selectors: '/selectors',

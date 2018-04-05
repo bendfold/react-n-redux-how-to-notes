@@ -33,6 +33,11 @@ const MAIN_NAV_ITEMS = [
 		label: 'Thunks',
 		link: ROUTE_PATH.thunks,
 		id: uuidv4()
+	},
+	{
+		label: 'Error Handling',
+		link: ROUTE_PATH.errorHandling,
+		id: uuidv4()
 	}
 ];
 

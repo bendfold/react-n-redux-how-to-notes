@@ -5,11 +5,11 @@ import uuidv4 from 'uuid/v4';
 // COMPONENTS
 import Instructions from '../instructions/Instructions';
 // CONTENT
-import content from '../../../content/markdown/thunks.md';
+import content from '../../../content/markdown/error-handling.md';
 
-const selectorsContainer = () => ([
-	<h1 key={uuidv4()}>React & Redux - Thunks</h1>,
+const errorHandlingContainer = () => ([
+	<h1 key={uuidv4()}>React & Redux - Error Handling</h1>,
 	<Instructions key={uuidv4()} content={content} />,
 ]);
 
-export default selectorsContainer;
+export default errorHandlingContainer;
