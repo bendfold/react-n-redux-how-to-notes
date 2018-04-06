@@ -24,14 +24,14 @@ Rather than returning a promise, we need to return a function that accepts the d
 
     export const requestCounters = (name) => {
     	return {
-    		type: TYPE.REQUEST_COUNTERS,
+    		type: TYPE.FETCH_COUNTERS_REQUEST,
     		name
     	}
     };
     
     const receiveCounters = (payload, name) => {
     	return {
-    		type: TYPE.RECEIVE_COUNTERS,
+    		type: TYPE.FETCH_COUNTERS_SUCCESS,
     		payload,
     		name
     	}
@@ -67,14 +67,14 @@ Rather than returning a promise, we need to return a function that accepts the d
 
     const requestCounters = (name) => {
     	return {
-    		type: TYPE.REQUEST_COUNTERS,
+    		type: TYPE.FETCH_COUNTERS_REQUEST,
     		name
     	}
     };
     
     const receiveCounters = (payload, name) => {
     	return {
-    		type: TYPE.RECEIVE_COUNTERS,
+    		type: TYPE.FETCH_COUNTERS_SUCCESS,
     		payload,
     		name
     	}

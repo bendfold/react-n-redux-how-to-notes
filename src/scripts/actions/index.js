@@ -32,29 +32,45 @@ export const createCounter = (name) => {
 
 const requestCounters = (name) => {
 	return {
-		type: TYPE.REQUEST_COUNTERS,
+		type: TYPE.FETCH_COUNTERS_REQUEST,
 		name
 	}
 };
 
 const receiveCounters = (payload, name) => {
 	return {
-		type: TYPE.RECEIVE_COUNTERS,
+		type: TYPE.FETCH_COUNTERS_SUCCESS,
 		payload,
 		name
 	}
 };
 
-export const fetchCounters = (reducerName) => (dispatch, getState) => {
+export const fetchCounters = (name) => (dispatch, getState) => {
 	/* 
 		---- TODO ----
 		If this can be fired from user interaction you need to add a 
 		check in for isFetching to block extra network requests, 
 		like this - https://goo.gl/FUTqgS
 	*/
-	dispatch( requestCounters(reducerName) );
-
-	return api.fetchCounterCollection().then((payload) => {
-		dispatch( receiveCounters(payload, reducerName) );
+	dispatch({
+		type: TYPE.FETCH_COUNTERS_REQUEST,
+		name
 	});
+
+	return api.fetchCounterCollection().then(
+		(payload) => {
+			dispatch({
+				type: TYPE.FETCH_COUNTERS_SUCCESS,
+				payload,
+				name
+			});
+		},
+		(error) => {
+			dispatch({
+				type: TYPE.FETCH_COUNTERS_FAILURE,
+				name,
+				message: error.message || 'Something went wrong'
+			});
+		}
+	);
 };

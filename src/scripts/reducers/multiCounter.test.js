@@ -76,13 +76,13 @@ describe('REDUCERS', () => {
 		});
 	});
 	describe('isFetching', () => {
-		it('Should be set to true when the action type is REQUEST_COUNTERS', () => {
+		it('Should be set to true when the action type is FETCH_COUNTERS_REQUEST', () => {
 			const stateBefore = false;
 			const actualResult = getMultiCounterReducers().isFetching(stateBefore, actions.requestCounters());
 
 			expect(actualResult).toEqual(true);
 		});
-		it('Should be set to false when the action type is RECEIVE_COUNTERS', () => {
+		it('Should be set to false when the action type is FETCH_COUNTERS_SUCCESS', () => {
 			const stateBefore = true;
 			const actualResult = getMultiCounterReducers().isFetching(stateBefore, actions.receiveCounters());
 

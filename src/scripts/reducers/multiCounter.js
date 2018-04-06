@@ -5,7 +5,7 @@ import { TYPE } from '../constants';
 
 const counterCollection = (state = {}, action) => {
 	switch (action.type) {
-		case TYPE.RECEIVE_COUNTERS:
+		case TYPE.FETCH_COUNTERS_SUCCESS:
 			return {
 				...state,
 				...action.payload
@@ -49,9 +49,9 @@ const counterCollection = (state = {}, action) => {
 
 const isFetching = (state = true, action) => {
 	switch (action.type) {
-		case TYPE.REQUEST_COUNTERS:
+		case TYPE.FETCH_COUNTERS_REQUEST:
 			return true;
-		case TYPE.RECEIVE_COUNTERS:
+		case TYPE.FETCH_COUNTERS_SUCCESS:
 			return false;
 		default:
 			return state;

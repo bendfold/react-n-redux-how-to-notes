@@ -68,6 +68,9 @@ const delay = (ms) => ( new Promise(resolve => setTimeout(resolve, ms)) );
 
 const fetchCounterCollection = () => {
 	return delay(500).then(() => {
+		
+		// throw new Error('Boom!');
+
 		return mockDataBase;
 	});
 };

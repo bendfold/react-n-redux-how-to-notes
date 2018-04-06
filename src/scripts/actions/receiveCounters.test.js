@@ -14,8 +14,8 @@ describe('ACTIONS', () => {
 
 			expect(Object.keys(actualResult).sort()).toEqual(expectedResult);
 		});
-		it(`should have the type property ${TYPE.RECEIVE_COUNTERS}`, () => {
-			expect(actualResult.type).toEqual(TYPE.RECEIVE_COUNTERS);
+		it(`should have the type property ${TYPE.FETCH_COUNTERS_SUCCESS}`, () => {
+			expect(actualResult.type).toEqual(TYPE.FETCH_COUNTERS_SUCCESS);
 		});
 	});
 });
