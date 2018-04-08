@@ -53,6 +53,21 @@ const isFetching = (state = true, action) => {
 			return true;
 		case TYPE.FETCH_COUNTERS_SUCCESS:
 			return false;
+		case TYPE.FETCH_COUNTERS_FAILURE:
+			return false;
+		default:
+			return state;
+	}
+};
+
+const errorMessage = (state = null, action) => {
+	switch (action.type) {
+		case TYPE.FETCH_COUNTERS_FAILURE:
+			return action.message;
+		case TYPE.FETCH_COUNTERS_REQUEST:
+			return null;
+		case TYPE.FETCH_COUNTERS_SUCCESS:
+			return null;
 		default:
 			return state;
 	}
@@ -61,7 +76,8 @@ const isFetching = (state = true, action) => {
 export const getMultiCounterReducers = () => {
 	return {
 		counterCollection,
-		isFetching
+		isFetching,
+		errorMessage
 	};
 };
 
@@ -73,3 +89,4 @@ export default multiCounter;
 
 // SELECTORS
 export const getIsFetching = (state) => state.isFetching;
+export const getErrorMessage = (state) => state.errorMessage;

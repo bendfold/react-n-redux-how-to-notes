@@ -30,26 +30,11 @@ export const createCounter = (name) => {
 	}
 };
 
-const requestCounters = (name) => {
-	return {
-		type: TYPE.FETCH_COUNTERS_REQUEST,
-		name
-	}
-};
-
-const receiveCounters = (payload, name) => {
-	return {
-		type: TYPE.FETCH_COUNTERS_SUCCESS,
-		payload,
-		name
-	}
-};
-
 export const fetchCounters = (name) => (dispatch, getState) => {
-	/* 
+	/*
 		---- TODO ----
-		If this can be fired from user interaction you need to add a 
-		check in for isFetching to block extra network requests, 
+		If this can be fired from user interaction you need to add a
+		check in for isFetching to block extra network requests,
 		like this - https://goo.gl/FUTqgS
 	*/
 	dispatch({

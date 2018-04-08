@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 // ACTIONS
 import * as actions from '../../actions';
 // REDUCERS
-import { getIsFetching } from '../../reducers';
+import { getIsFetching, getErrorMessage } from '../../reducers';
 // COMPONENTS
 import CounterList from '../counter-generator/CounterList';
+import FetchError from '../error-handling/FetchErrorContainer';
 // CONSTANTS
 import { TYPE, REDUCER_NAME } from '../../constants';
 // API
@@ -28,19 +29,26 @@ class CounterListContainer extends Component {
 		fetchCounters(reducerName); // Thunk based async dispatch calls.
 	}
 	render() {
-		const { counterCollection, isFetching, incrementCounter, decrementCounter } = this.props;
+		const { counterCollection, isFetching, errorMessage, incrementCounter, decrementCounter } = this.props;
+
+		console.log('errorMessage ', errorMessage);
 
 		if (isFetching && !Object.keys(counterCollection).length) {
 			return <p>Loading Counters...</p>;
+		}
+		if (errorMessage && !Object.keys(counterCollection).length) {
+			return <FetchError message={errorMessage} />
 		}
 		return <CounterList onUpClick={incrementCounter} onDownClick={decrementCounter} {...this.props} />
 	}
 }
 
 const mapStateToProps = (state) => {
+	console.log
 	return {
 		counterCollection: state.counterCollectionB.counterCollection,
 		isFetching: getIsFetching(state.counterCollectionB),
+		errorMessage: getErrorMessage(state.counterCollectionB),
 		reducerName
 	};
 };

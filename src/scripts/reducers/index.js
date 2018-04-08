@@ -16,5 +16,8 @@ const rootReducer = combineReducers({
 
 export default rootReducer;
 
+export const getIsFetching = (state) =>
+	fromCounterCollection.getIsFetching(state);
 
-export const getIsFetching = (state) => fromCounterCollection.getIsFetching(state);
+export const getErrorMessage = (state) =>
+	fromCounterCollection.getErrorMessage(state);
