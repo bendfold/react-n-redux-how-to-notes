@@ -30,6 +30,8 @@ export const createCounter = (name) => {
 	}
 };
 
+// export const fetchCountersRequest = (name) => ();
+
 export const fetchCounters = (name) => (dispatch, getState) => {
 	/*
 		---- TODO ----
@@ -42,20 +44,21 @@ export const fetchCounters = (name) => (dispatch, getState) => {
 		name
 	});
 
-	return api.fetchCounterCollection().then(
-		(payload) => {
-			dispatch({
-				type: TYPE.FETCH_COUNTERS_SUCCESS,
-				payload,
-				name
-			});
-		},
-		(error) => {
-			dispatch({
-				type: TYPE.FETCH_COUNTERS_FAILURE,
-				name,
-				message: error.message || 'Something went wrong'
-			});
-		}
-	);
+	return api.fetchCounterCollection()
+		.then(
+			(payload) => {
+				dispatch({
+					type: TYPE.FETCH_COUNTERS_SUCCESS,
+					payload,
+					name
+				});
+			},
+			(error) => {
+				dispatch({
+					type: TYPE.FETCH_COUNTERS_FAILURE,
+					name,
+					message: error.message || 'Something went wrong'
+				});
+			}
+		);
 };
