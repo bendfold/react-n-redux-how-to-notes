@@ -32,7 +32,7 @@ export const createCounter = (name) => {
 
 // export const fetchCountersRequest = (name) => ();
 
-export const fetchCounters = (name) => (dispatch, getState) => {
+export const fetchCounters = (name, path) => (dispatch, getState) => {
 	/*
 		---- TODO ----
 		If this can be fired from user interaction you need to add a
@@ -44,7 +44,7 @@ export const fetchCounters = (name) => (dispatch, getState) => {
 		name
 	});
 
-	return api.fetchCounterCollection()
+	return api.fetchCounterCollection(path)
 		.then(
 			(payload) => {
 				dispatch({

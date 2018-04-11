@@ -24,15 +24,11 @@ class CounterListContainer extends Component {
 	}
 	fetchData() {
 		const {requestCounters, fetchCounters} = this.props;
-
-		// requestCounters(reducerName);
-		fetchCounters(reducerName); // Thunk based async dispatch calls.
+		
+		fetchCounters(reducerName, true); // Thunk based async dispatch calls.
 	}
 	render() {
 		const { counterCollection, isFetching, errorMessage, incrementCounter, decrementCounter } = this.props;
-
-		console.log('errorMessage ', errorMessage);
-
 		if (isFetching && !Object.keys(counterCollection).length) {
 			return <p>Loading Counters...</p>;
 		}
@@ -44,7 +40,6 @@ class CounterListContainer extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log
 	return {
 		counterCollection: state.counterCollectionB.counterCollection,
 		isFetching: getIsFetching(state.counterCollectionB),

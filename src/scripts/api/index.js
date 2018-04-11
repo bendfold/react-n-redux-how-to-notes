@@ -66,10 +66,13 @@ const mockDataBase = {
 
 const delay = (ms) => ( new Promise(resolve => setTimeout(resolve, ms)) );
 
-const fetchCounterCollection = () => {
+const fetchCounterCollection = (path) => {
 	return delay(500).then(() => {
 
-		// throw new Error('BOOOM!!!!');
+		// In the end this path with be the endpoint URL, but for now we can use it to test errors.
+		if (!path) {
+			throw new Error('BOOOM!!!!');
+		}
 
 		return mockDataBase;
 	});
