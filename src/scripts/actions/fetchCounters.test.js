@@ -4,23 +4,18 @@ import { TYPE, REDUCER_NAME } from '../constants/index';
 import {mockStore} from '../utils/test/mockStore';
 
 // https://michalzalecki.com/testing-redux-thunk-like-you-always-want-it/
+const reducerName = REDUCER_NAME.B;
+let store = {};
 
 describe('ACTIONS', () => {
 	describe('fetchCounters', () => {
-		const reducerName = REDUCER_NAME.B;
-		let store = {};
-		// const actualResult = fetchCounters( REDUCER_NAME.B );
-
-		// -----------------------------------------------------------------------------
-		// DO THIS - .resolves & .rejects
-		// https://facebook.github.io/jest/docs/en/asynchronous.html
-		// -----------------------------------------------------------------------------
 		beforeEach(() => {
 			store = mockStore();
 		});
 		afterEach(() => {
 			store = {};
 		});
+		
 		test('Action 0 should contain the keys, "type" and "name".', async () => {
 			expect.assertions(1);
 

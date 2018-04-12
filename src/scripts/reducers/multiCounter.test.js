@@ -1,23 +1,41 @@
 // REDUCER
 import { getMultiCounterReducers } from './multiCounter';
 // CONSTANTS
-import { TYPE } from '../constants/index';
 // ACTIONS
 import * as actions from '../actions';
 // API
 import { mockDataBase } from '../api';
 // LIBS
 import { v4 } from 'uuid';
+// CONSTANTS
+import { TYPE, REDUCER_NAME } from '../constants/index';
+// MOCK-STORE
+import {mockStore} from '../utils/test/mockStore';
+
+const reducerName = REDUCER_NAME.B;
+let store = {};
 
 describe('REDUCERS', () => {
-	// describe('Receive counters', () => {
-	// 	it('Should take in a counters object from the API call and add it to the current state.', () => {
-	// 		const stateBefore = {};
-	// 		const actualResult = getMultiCounterReducers().counterCollection(stateBefore, actions.receiveCounters(mockDataBase));
 
-	// 		expect(actualResult).toEqual(mockDataBase);
-	// 	});
-	// });
+	beforeEach(() => {
+		store = mockStore();
+	});
+	afterEach(() => {
+		store = {};
+	});
+
+	describe('Receive counters', () => {
+			test('Should take in a counters object from the API call and add it to the current state.', async () => {
+			expect.assertions(1);
+			await store.dispatch( actions.fetchCounters( reducerName, true ) );
+			
+			const thunkActions = store.getActions();
+			const stateBefore = {};
+			const actualResult = getMultiCounterReducers().counterCollection(stateBefore, thunkActions[1]);
+
+			expect(actualResult).toEqual(mockDataBase);
+		});
+	});
 	describe('Create counter', () => {
 		const stateBefore = {};
 		const actualResult = getMultiCounterReducers().counterCollection(stateBefore, actions.createCounter());
