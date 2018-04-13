@@ -30,8 +30,7 @@ export const createCounter = (name) => {
 	}
 };
 
-// export const fetchCountersRequest = (name) => ();
-
+// Thunk Aysnc Method for fetching data. 
 export const fetchCounters = (name, path) => (dispatch, getState) => {
 	/*
 		---- TODO ----
