@@ -3,8 +3,6 @@ import uuidv4 from 'uuid/v4';
 // CONSTANTS
 import { ROUTE_PATH } from '../constants';
 
-const delay = (ms) => ( new Promise(resolve => setTimeout(resolve, ms)) );
-
 export const MAIN_NAV_ITEMS = [
 	{
 		label: 'Basic Counter',
@@ -71,13 +69,9 @@ export let mockDataBase = {
 	}
 };
 
-<<<<<<< HEAD
-export const fetchCounterCollection = () => {
-=======
 const delay = (ms) => ( new Promise(resolve => setTimeout(resolve, ms)) );
 
 const fetchCounterCollection = (path) => {
->>>>>>> redux-how-to-guide
 	return delay(500).then(() => {
 
 		// In the end this path with be the endpoint URL, but for now we can use it to test errors.
