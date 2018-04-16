@@ -37,6 +37,11 @@ export const MAIN_NAV_ITEMS = [
 		id: uuidv4()
 	},
 	{
+		label: 'Error Handling',
+		link: ROUTE_PATH.errorHandling,
+		id: uuidv4()
+	},
+	{
 		label: 'Server Interaction',
 		link: ROUTE_PATH.serverInteraction,
 		id: uuidv4()
@@ -66,8 +71,20 @@ export let mockDataBase = {
 	}
 };
 
+<<<<<<< HEAD
 export const fetchCounterCollection = () => {
+=======
+const delay = (ms) => ( new Promise(resolve => setTimeout(resolve, ms)) );
+
+const fetchCounterCollection = (path) => {
+>>>>>>> redux-how-to-guide
 	return delay(500).then(() => {
+
+		// In the end this path with be the endpoint URL, but for now we can use it to test errors.
+		if (!path) {
+			throw new Error('BOOOM!!!!');
+		}
+
 		return mockDataBase;
 	});
 };

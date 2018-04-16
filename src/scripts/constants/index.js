@@ -12,13 +12,15 @@ const TYPE = {
 	INCREMENT_COUNTER: 'INCREMENT_COUNTER',
 	DECREMENT_COUNTER: 'DECREMENT_COUNTER',
 	CREATE_COUNTER: 'CREATE_COUNTER',
-	REQUEST_COUNTERS: 'REQUEST_COUNTERS',
-	RECEIVE_COUNTERS: 'RECEIVE_COUNTERS'
+	FETCH_COUNTERS_REQUEST: 'FETCH_COUNTERS_REQUEST',
+	FETCH_COUNTERS_SUCCESS: 'FETCH_COUNTERS_SUCCESS',
+	FETCH_COUNTERS_FAILURE: 'FETCH_COUNTERS_FAILURE'
 };
 
 const ROUTE_PATH = {
-	basicCounter: '/basic-counter',
 	addingReactRouter: '/adding-react-router',
+	basicCounter: '/basic-counter',
+	errorHandling: '/error-handling',
 	counterGenerator: '/counter-generator',
 	mockDataLoad: '/mock-data-load',
 	selectors: '/selectors',
@@ -28,7 +30,8 @@ const ROUTE_PATH = {
 
 const REDUCER_NAME = {
 	A: 'A',
-	B: 'B'
+	B: 'B',
+	C: 'C'
 };
 
 export {

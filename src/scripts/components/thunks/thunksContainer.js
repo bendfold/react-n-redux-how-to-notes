@@ -8,7 +8,7 @@ import Instructions from '../instructions/Instructions';
 import content from '../../../content/markdown/thunks.md';
 
 const selectorsContainer = () => ([
-	<h1 key={uuidv4()}>React & Redux - Selectors</h1>,
+	<h1 key={uuidv4()}>React & Redux - Thunks</h1>,
 	<Instructions key={uuidv4()} content={content} />,
 ]);
 
