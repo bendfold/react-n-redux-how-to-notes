@@ -1,3 +1,4 @@
+
 // FRAMEWORK
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -13,7 +14,7 @@ import { TYPE, REDUCER_NAME } from '../../constants';
 // API
 import { fetchCounterCollection } from '../../api';
 
-const reducerName = REDUCER_NAME.B;
+const reducerName = REDUCER_NAME.C;
 
 class CounterListContainer extends Component {
 	constructor(props) {
@@ -25,13 +26,22 @@ class CounterListContainer extends Component {
 	fetchData() {
 		const {requestCounters, fetchCounters} = this.props;
 
-		fetchCounters(reducerName, true); // Thunk based async dispatch calls.
+		fetchCounters(reducerName, false); // Thunk based async dispatch calls.
 	}
 	render() {
 		const { counterCollection, isFetching, errorMessage, incrementCounter, decrementCounter } = this.props;
+
+console.log('errorMessage ', errorMessage);
+console.log('counterCollection ', counterCollection);
+console.log('Object.keys(counterCollection) ', Object.keys(counterCollection));
+
+
 		if (isFetching && !Object.keys(counterCollection).length) {
 			return <p>Loading Counters...</p>;
 		}
+
+
+
 		if (errorMessage && !Object.keys(counterCollection).length) {
 			return <FetchError message={errorMessage} />
 		}
@@ -41,9 +51,9 @@ class CounterListContainer extends Component {
 
 const mapStateToProps = (state) => {
 	return {
-		counterCollection: state.counterCollectionB.counterCollection,
-		isFetching: getIsFetching(state.counterCollectionB),
-		errorMessage: getErrorMessage(state.counterCollectionB),
+		counterCollection: state.counterCollectionC.counterCollection,
+		isFetching: getIsFetching(state.counterCollectionC),
+		errorMessage: getErrorMessage(state.counterCollectionC),
 		reducerName
 	};
 };

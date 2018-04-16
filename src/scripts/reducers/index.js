@@ -11,7 +11,8 @@ import { REDUCER_NAME } from '../constants';
 const rootReducer = combineReducers({
 	count,
 	counterCollectionA: createNamedReducer(multiCounter(), REDUCER_NAME.A),
-	counterCollectionB: createNamedReducer(multiCounter(), REDUCER_NAME.B)
+	counterCollectionB: createNamedReducer(multiCounter(), REDUCER_NAME.B),
+	counterCollectionC: createNamedReducer(multiCounter(), REDUCER_NAME.C)
 });
 
 export default rootReducer;

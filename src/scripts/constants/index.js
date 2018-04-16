@@ -29,7 +29,8 @@ const ROUTE_PATH = {
 
 const REDUCER_NAME = {
 	A: 'A',
-	B: 'B'
+	B: 'B',
+	C: 'C'
 };
 
 export {
