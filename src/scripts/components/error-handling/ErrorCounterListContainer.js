@@ -31,16 +31,9 @@ class CounterListContainer extends Component {
 	render() {
 		const { counterCollection, isFetching, errorMessage, incrementCounter, decrementCounter } = this.props;
 
-console.log('errorMessage ', errorMessage);
-console.log('counterCollection ', counterCollection);
-console.log('Object.keys(counterCollection) ', Object.keys(counterCollection));
-
-
 		if (isFetching && !Object.keys(counterCollection).length) {
 			return <p>Loading Counters...</p>;
 		}
-
-
 
 		if (errorMessage && !Object.keys(counterCollection).length) {
 			return <FetchError message={errorMessage} />
