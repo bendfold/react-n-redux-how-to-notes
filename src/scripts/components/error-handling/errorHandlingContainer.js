@@ -12,7 +12,7 @@ import content from '../../../content/markdown/error-handling.md';
 const errorHandlingContainer = () => ([
 	<h1 key={uuidv4()}>React & Redux - Error Handling</h1>,
 	<CounterGeneratorControlsContainer key={uuidv4()} />,
-	<CounterListContainer key={uuidv4()} path={false} />,
+	<CounterListContainer key={uuidv4()} />,
 	<Instructions key={uuidv4()} content={content} />,
 ]);
 
