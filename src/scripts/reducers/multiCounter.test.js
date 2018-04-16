@@ -90,6 +90,42 @@ describe('REDUCERS', () => {
 				expect(actualResult).toEqual(false);
 			});
 		});
+
+		describe('errorMessage', () => {
+			it('Should return and error message as a string when the action type is FETCH_COUNTERS_FAILURE', async () => {
+				expect.assertions(1);
+				await store.dispatch( actions.fetchCounters( reducerName, false ) );
+				
+				const thunkActions = store.getActions();
+				const stateBefore = null;
+				const actualResult = getMultiCounterReducers().errorMessage(stateBefore, thunkActions[1]);
+
+				expect(typeof actualResult).toEqual('string');
+			});
+
+			it('Should return null when the action type is FETCH_COUNTERS_REQUEST', async () => {
+				expect.assertions(1);
+				await store.dispatch( actions.fetchCounters( reducerName, false ) );
+				
+				const thunkActions = store.getActions();
+				const stateBefore = null;
+				const actualResult = getMultiCounterReducers().errorMessage(stateBefore, thunkActions[0]);
+
+				expect(actualResult).toEqual(null);
+			});
+
+			it('Should return null when the action type is FETCH_COUNTERS_SUCCESS', async () => {
+				expect.assertions(1);
+				await store.dispatch( actions.fetchCounters( reducerName, true ) );
+				
+				const thunkActions = store.getActions();
+				const stateBefore = null;
+				const actualResult = getMultiCounterReducers().errorMessage(stateBefore, thunkActions[1]);
+				
+				expect(actualResult).toEqual(null);
+			});
+			
+		});
 	
 	});
 
