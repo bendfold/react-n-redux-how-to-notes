@@ -30,8 +30,23 @@ export const createCounter = (name) => {
 	}
 };
 
+// Thunk Aysnc Method for adding data to the server. 
+export const addCounterToServer = () => (dispatch) => {
+	return api.addCounter().then(
+		(response) => {
+
+			console.log('response --- ', response);
+			
+			dispatch({
+				type: TYPE.ADD_COUNTER_SUCESS,
+				response
+			});
+		}
+	);
+};
+
 // Thunk Aysnc Method for fetching data. 
-export const fetchCounters = (name, path) => (dispatch, getState) => {
+export const fetchCounters = (name, path, serverSim) => (dispatch, getState) => {
 	/*
 		---- TODO ----
 		If this can be fired from user interaction you need to add a
@@ -43,7 +58,7 @@ export const fetchCounters = (name, path) => (dispatch, getState) => {
 		name
 	});
 
-	return api.fetchCounterCollection(path)
+	return api.fetchCounterCollection(path, serverSim)
 		.then(
 			(payload) => {
 				dispatch({

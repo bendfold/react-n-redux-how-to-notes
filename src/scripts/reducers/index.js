@@ -12,7 +12,8 @@ const rootReducer = combineReducers({
 	count,
 	counterCollectionA: createNamedReducer(multiCounter(), REDUCER_NAME.A),
 	counterCollectionB: createNamedReducer(multiCounter(), REDUCER_NAME.B),
-	counterCollectionC: createNamedReducer(multiCounter(), REDUCER_NAME.C)
+	counterCollectionC: createNamedReducer(multiCounter(), REDUCER_NAME.C),
+	counterCollectionD: createNamedReducer(multiCounter(), REDUCER_NAME.D)
 });
 
 export default rootReducer;

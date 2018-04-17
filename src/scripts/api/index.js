@@ -3,6 +3,8 @@ import uuidv4 from 'uuid/v4';
 // CONSTANTS
 import { ROUTE_PATH } from '../constants';
 
+const delay = (ms) => ( new Promise(resolve => setTimeout(resolve, ms)) );
+
 export const MAIN_NAV_ITEMS = [
 	{
 		label: 'Basic Counter',
@@ -69,9 +71,22 @@ export let mockDataBase = {
 	}
 };
 
-const delay = (ms) => ( new Promise(resolve => setTimeout(resolve, ms)) );
+export let serverInteractionDB = {
+	"cef86f29-4c8c-45ee-9d8f-2c9ce9f2091b": {
+		"id": "cef86f29-4c8c-45ee-9d8f-2c9ce9f2091b",
+		"count": 7
+	},
+	"e24bc8da-c325-45b0-825a-cc8e6705ec85": {
+		"id": "e24bc8da-c325-45b0-825a-cc8e6705ec85",
+		"count": 1
+	},
+	"8857d515-341b-46c7-a72a-3a5cfaeb1d46": {
+		"id": "8857d515-341b-46c7-a72a-3a5cfaeb1d46",
+		"count": 11
+	}
+};
 
-const fetchCounterCollection = (path) => {
+export const fetchCounterCollection = (path, serverSim) => {
 	return delay(500).then(() => {
 
 		// In the end this path with be the endpoint URL, but for now we can use it to test errors.
@@ -79,33 +94,25 @@ const fetchCounterCollection = (path) => {
 			throw new Error('BOOOM!!!!');
 		}
 
-		return mockDataBase;
+		return serverSim ? serverInteractionDB : mockDataBase;
 	});
 };
 
+// ----------------------------------
+// Server interaction examples
+// ----------------------------------
 export const addCounter = () => {
-	delay(500).then(() => {
+	return delay(500).then(() => {
+		const newCounterID = uuidv4();
+		const newCounter = {
+				[newCounterID]: {
+					id: newCounterID,
+					count: 0
+				}
+			};
+		const newMockDataBase = Object.assign(serverInteractionDB, newCounter);
+		serverInteractionDB = newMockDataBase;
 
-		console.log('addCounter fired');
-		
-		// const newCounterID = uuidv4();
-		// const newCounter = {
-		// 		[newCounterID]: {
-		// 			id: newCounterID,
-		// 			count: 0
-		// 		}
-		// 	};
-		// const newMockDataBase = Object.assign(mockDataBase, newCounter);
-		// mockDataBase = newMockDataBase;
-
-		// return newCounter;
-	});
-};
-
-export const removeCounter = (id) => {
-	delay(500).then(() => {
-
-		console.log('removeCounter fired');
-
+		return newCounter;
 	});
 };
