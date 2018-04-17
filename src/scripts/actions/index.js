@@ -31,15 +31,13 @@ export const createCounter = (name) => {
 };
 
 // Thunk Aysnc Method for adding data to the server. 
-export const addCounterToServer = () => (dispatch) => {
+export const addCounterToServer = (name) => (dispatch) => {
 	return api.addCounter().then(
 		(response) => {
-
-			console.log('response --- ', response);
-			
 			dispatch({
-				type: TYPE.ADD_COUNTER_SUCESS,
-				response
+				type: TYPE.ADD_COUNTER_SUCCESS,
+				response,
+				name
 			});
 		}
 	);

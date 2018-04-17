@@ -15,7 +15,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		onClick: () => {
-			dispatch(actions.addCounterToServer());
+			dispatch(actions.addCounterToServer(REDUCER_NAME.D));
 		}
 	}
 };

@@ -4,7 +4,7 @@ import { getMultiCounterReducers } from './multiCounter';
 // ACTIONS
 import * as actions from '../actions';
 // API
-import { mockDataBase } from '../api';
+import { mockDataBase, serverInteractionDB } from '../api';
 // LIBS
 import { v4 } from 'uuid';
 // CONSTANTS
@@ -13,6 +13,7 @@ import { TYPE, REDUCER_NAME } from '../constants/index';
 import {mockStore} from '../utils/test/mockStore';
 
 const reducerName = REDUCER_NAME.B;
+const serverReducerName = REDUCER_NAME.D;
 let store = {};
 
 describe('REDUCERS', () => {
@@ -35,6 +36,19 @@ describe('REDUCERS', () => {
 				const actualResult = getMultiCounterReducers().counterCollection(stateBefore, thunkActions[1]);
 
 				expect(actualResult).toEqual(mockDataBase);
+			});
+		});
+
+		describe('Add counter success', () => {
+				test('Should return the new item that was just added to the remote DB and add it to the state', async () => {
+				expect.assertions(1);
+				await store.dispatch( actions.addCounterToServer( REDUCER_NAME.D ) );
+
+				const thunkActions = store.getActions();
+				const stateBefore = {};
+				const actualResult = getMultiCounterReducers().counterCollection(stateBefore, thunkActions[0]);
+
+				expect(actualResult).toEqual(thunkActions[0].response);
 			});
 		});
 

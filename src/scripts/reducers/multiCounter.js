@@ -10,6 +10,11 @@ const counterCollection = (state = {}, action) => {
 				...state,
 				...action.payload
 			};
+		case TYPE.ADD_COUNTER_SUCCESS:
+			return {
+				...state,
+				...action.response
+			};
 		case TYPE.CREATE_COUNTER:
 			return {
 				...state,
