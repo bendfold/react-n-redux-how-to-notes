@@ -28,14 +28,14 @@ class CounterListContainer extends Component {
 		fetchCounters(reducerName, true, true); // Thunk based async dispatch calls.
 	}
 	render() {
-		const { counterCollection, isFetching, errorMessage, incrementCounter, decrementCounter } = this.props;
+		const { counterCollection, isFetching, errorMessage, incrementCounter, decrementCounter, removeCounterFromServer } = this.props;
 		if (isFetching && !Object.keys(counterCollection).length) {
 			return <p>Loading Counters...</p>;
 		}
 		if (errorMessage && !Object.keys(counterCollection).length) {
 			return <FetchError message={errorMessage} />
 		}
-		return <CounterList onUpClick={incrementCounter} onDownClick={decrementCounter} {...this.props} />
+		return <CounterList onUpClick={incrementCounter} onDownClick={decrementCounter} onRemoveClick={removeCounterFromServer} {...this.props} />
 	}
 }
 

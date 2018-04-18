@@ -116,3 +116,12 @@ export const addCounter = () => {
 		return newCounter;
 	});
 };
+
+
+export const removeCounter = (id) => {
+	return delay(500).then(() => {
+		return id;
+	});
+};
+
+

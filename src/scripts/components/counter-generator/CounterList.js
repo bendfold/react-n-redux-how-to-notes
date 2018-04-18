@@ -7,16 +7,22 @@ const CounterList = ({
 	counterCollection,
 	onUpClick,
 	onDownClick,
-	reducerName
+	reducerName,
+	onRemoveClick
 }) => {
+	console.log('onRemoveClick <<<<<<<<<<<<<< ', onRemoveClick);
 	return (<ul>
 			{
 				Object.keys(counterCollection).map((key) => {
 					const counter = counterCollection[key];
+					const removeButton = onRemoveClick ? (<button onClick={() => (onRemoveClick(counter.id, reducerName))}>Remove Counter</button>) : null;
 					return (
 						<li key={counter.id}>
 							<div className={CLASSNAME.counterComponent}>
 								<h2>Counter</h2>
+								
+								{removeButton}
+								
 								<p>Count: {counter.count}</p>
 								<ul>
 									<li>

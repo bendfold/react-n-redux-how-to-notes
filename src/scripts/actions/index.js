@@ -43,6 +43,22 @@ export const addCounterToServer = (name) => (dispatch) => {
 	);
 };
 
+// Thunk Aysnc Method for removing data to the server. 
+export const removeCounterFromServer = (id, name) => (dispatch) => {
+	return api.removeCounter(id).then(
+		(response) => {
+			
+			console.log('response OOOOOOO> ', response);
+
+			dispatch({
+				type: TYPE.REMOVE_COUNTER_SUCCESS,
+				response,
+				name
+			});
+		}
+	);
+};
+
 // Thunk Aysnc Method for fetching data. 
 export const fetchCounters = (name, path, serverSim) => (dispatch, getState) => {
 	/*
