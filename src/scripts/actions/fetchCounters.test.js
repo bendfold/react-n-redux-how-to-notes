@@ -36,6 +36,15 @@ describe('ACTIONS', () => {
 		
 		});
 
+		test('Action 0 "name" value should be a string.', async () => {
+			expect.assertions(1);
+
+			await store.dispatch( fetchCounters( reducerName, true ) );
+			const actions = store.getActions();
+
+			expect(typeof actions[0].name).toEqual('string');
+		});
+
 		test('Success - Action 1 should contain the keys, "type", "name" and "payload".', async () => {
 			expect.assertions(1);
 
@@ -54,6 +63,15 @@ describe('ACTIONS', () => {
 
 			expect(actions[1].type).toEqual(TYPE.FETCH_COUNTERS_SUCCESS);
 		});
+		
+		test('Success - Action 1 "name" value should be a string.', async () => {
+			expect.assertions(1);
+
+			await store.dispatch( fetchCounters( reducerName, true ) );
+			const actions = store.getActions();
+
+			expect(typeof actions[1].name).toEqual('string');
+		});
 
 		test('Error - Action 1 "type" value should be correctly assigned.', async () => {
 			expect.assertions(1);
@@ -62,6 +80,15 @@ describe('ACTIONS', () => {
 			const actions = store.getActions();
 
 			expect(actions[1].type).toEqual(TYPE.FETCH_COUNTERS_FAILURE);
+		});
+
+		test('Error - Action 1 "name" value should be a string.', async () => {
+			expect.assertions(1);
+
+			await store.dispatch( fetchCounters( reducerName, false ) );
+			const actions = store.getActions();
+
+			expect(typeof actions[1].name).toEqual('string');
 		});
 
 	});
