@@ -47,12 +47,9 @@ export const addCounterToServer = (name) => (dispatch) => {
 export const removeCounterFromServer = (id, name) => (dispatch) => {
 	return api.removeCounter(id).then(
 		(response) => {
-			
-			console.log('response OOOOOOO> ', response);
-
 			dispatch({
 				type: TYPE.REMOVE_COUNTER_SUCCESS,
-				response,
+				id,
 				name
 			});
 		}

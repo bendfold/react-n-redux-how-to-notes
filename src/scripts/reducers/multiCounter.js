@@ -15,6 +15,10 @@ const counterCollection = (state = {}, action) => {
 				...state,
 				...action.response
 			};
+		case TYPE.REMOVE_COUNTER_SUCCESS:
+			const newState = Object.assign({}, state);
+			delete newState[action.id];
+			return newState;
 		case TYPE.CREATE_COUNTER:
 			return {
 				...state,

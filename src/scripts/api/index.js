@@ -120,7 +120,14 @@ export const addCounter = () => {
 
 export const removeCounter = (id) => {
 	return delay(500).then(() => {
-		return id;
+	
+		const newMockDataBase = Object.assign({}, serverInteractionDB);
+
+		delete newMockDataBase[id];
+
+		serverInteractionDB = newMockDataBase;
+
+		return '200';
 	});
 };
 
