@@ -19,8 +19,8 @@ const mainNavItems = MAIN_NAV_ITEMS.map((navItem) => {
 });
 
 const Navigation = () => (
-	<nav>
-		<ul className={CLASSNAME.mainNav}>
+	<nav className={CLASSNAME.mainNav}>
+		<ul className={CLASSNAME.mainNavList}>
 			{mainNavItems}
 		</ul>
 	</nav>
