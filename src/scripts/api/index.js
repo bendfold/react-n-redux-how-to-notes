@@ -111,6 +111,7 @@ export const addCounter = () => {
 				}
 			};
 		const newMockDataBase = Object.assign(serverInteractionDB, newCounter);
+		
 		serverInteractionDB = newMockDataBase;
 
 		return newCounter;
@@ -120,11 +121,9 @@ export const addCounter = () => {
 
 export const removeCounter = (id) => {
 	return delay(500).then(() => {
-	
 		const newMockDataBase = Object.assign({}, serverInteractionDB);
 
 		delete newMockDataBase[id];
-
 		serverInteractionDB = newMockDataBase;
 
 		return '200';
