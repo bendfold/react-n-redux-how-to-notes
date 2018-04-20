@@ -10,7 +10,6 @@ const CounterList = ({
 	reducerName,
 	onRemoveClick
 }) => {
-	console.log('onRemoveClick <<<<<<<<<<<<<< ', onRemoveClick);
 	return (<ul>
 			{
 				Object.keys(counterCollection).map((key) => {
