@@ -8,7 +8,8 @@ const CLASSNAME = {
 	counterComponent: "counter-component",
 	counterGeneratorControlList: 'counter-generator-control-list',
 	demoColumnWrapper: 'demo-column-wrapper',
-	demoColumn: 'demo-column'
+	infoColumn: 'info-column',
+	counterColumn: '.counter-column'
 };
 
 const TYPE = {

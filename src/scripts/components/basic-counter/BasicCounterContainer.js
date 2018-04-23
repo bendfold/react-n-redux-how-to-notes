@@ -12,11 +12,11 @@ const BasicCounterContainer = () => (
 	<div>
 		<h1>React & Redux Basic Counter Example</h1>
 		<div className={CLASSNAME.demoColumnWrapper}>
-			<div className={CLASSNAME.demoColumn}>
-				<CounterContainer />
-			</div>
-			<div className={CLASSNAME.demoColumn}>
+			<div className={CLASSNAME.infoColumn}>
 				<Instructions content={content} />
+			</div>
+			<div className={CLASSNAME.counterColumn}>
+				<CounterContainer />
 			</div>
 		</div>
 	</div>
