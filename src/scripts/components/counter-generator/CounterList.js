@@ -10,27 +10,27 @@ const CounterList = ({
 	reducerName,
 	onRemoveClick
 }) => {
-	return (<ul>
+	return (<ul className={CLASSNAME.counterItemList}>
 			{
 				Object.keys(counterCollection).reverse().map((key) => {
 					const counter = counterCollection[key];
 					const removeButton = onRemoveClick ? (<button onClick={() => (onRemoveClick(counter.id, reducerName))}>Remove Counter</button>) : null;
 					return (
-						<li key={counter.id}>
+						<li key={counter.id} className={CLASSNAME.counterItem}>
 							<div className={CLASSNAME.counterComponent}>
-								<h2>Counter</h2>
 								
+								{/* Conditional button*/}
 								{removeButton}
 								
-								<p>Count: {counter.count}</p>
-								<ul>
-									<li>
-										<button onClick={() => (onUpClick(counter.id, reducerName))}>
+								<p className={CLASSNAME.counterItemCount}>Count: {counter.count}</p>
+								<ul className={CLASSNAME.counterCtrlList}>
+									<li className={CLASSNAME.counterCtrlItem}>
+										<button onClick={() => (onUpClick(counter.id, reducerName))} className={CLASSNAME.counterCtrlButton}>
 											Up
 										</button>
 									</li>
-									<li>
-										<button onClick={() => (onDownClick(counter.id, reducerName))}>
+									<li className={CLASSNAME.counterCtrlItem}>
+										<button onClick={() => (onDownClick(counter.id, reducerName))} className={CLASSNAME.counterCtrlButton}>
 											Down
 										</button>
 									</li>

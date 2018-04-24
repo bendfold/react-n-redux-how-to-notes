@@ -5,11 +5,19 @@ const CLASSNAME = {
 	mainNavList: 'main-nav-list',
 	mainNavItem: 'main-nav-item',
 	mainNavLink: 'main-nav-link',
-	counterComponent: "counter-component",
+	counterComponent: 'counter-component',
 	counterGeneratorControlList: 'counter-generator-control-list',
 	demoColumnWrapper: 'demo-column-wrapper',
 	infoColumn: 'info-column',
-	counterColumn: '.counter-column'
+	counterColumn: 'counter-column',
+	counterItemList: 'counter-item-list',
+	counterItem: 'counter-item',
+	counterItemHeader: 'counter-item-header',
+	counterItem: 'counter-item',
+	counterItemCount: 'counter-item-count',
+	counterCtrlList: 'counter-ctrl-list',
+	counterCtrlItem: 'counter-ctrl-item',
+	counterCtrlButton: 'counter-ctrl-button',
 };
 
 const TYPE = {
