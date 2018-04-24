@@ -11,7 +11,9 @@ const AddingReactRouterContainer = () => (
 	<div>
 		<h1>React & Redux - Adding React-Router</h1>
 		<div className={CLASSNAME.demoColumnWrapper}>
-			<Instructions content={content} />
+			<div className={CLASSNAME.infoColumn}>
+				<Instructions content={content} />
+			</div>
 		</div>
 	</div>
 );

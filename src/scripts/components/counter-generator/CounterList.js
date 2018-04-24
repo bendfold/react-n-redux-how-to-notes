@@ -12,7 +12,7 @@ const CounterList = ({
 }) => {
 	return (<ul>
 			{
-				Object.keys(counterCollection).map((key) => {
+				Object.keys(counterCollection).reverse().map((key) => {
 					const counter = counterCollection[key];
 					const removeButton = onRemoveClick ? (<button onClick={() => (onRemoveClick(counter.id, reducerName))}>Remove Counter</button>) : null;
 					return (
