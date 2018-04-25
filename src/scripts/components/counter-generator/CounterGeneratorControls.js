@@ -8,7 +8,7 @@ const CounterGeneratorControls = ({
 }) => (
 	<ul className={CLASSNAME.counterGeneratorControlList}>
 		<li>
-			<button onClick={onClick}>
+			<button onClick={onClick} className={CLASSNAME.counterCtrlButton}>
 				Add a counter
 			</button>
 		</li>

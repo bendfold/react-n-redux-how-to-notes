@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab')
 $bgndTestColor = Gainsboro
 
+html 
+	box-sizing border-box
+
+*,
+*:before,
+*:after
+	box-sizing inherit
+
 fontSize(n)
 	font-size n px
 	font-size (n/10) rem
@@ -33,3 +41,12 @@ a
 ul
 	margin 0
 	padding 0
+
+li
+	line-height 1.333
+	
+code
+	color #c7254e
+	background-color #eee
+	border-radius 4px
+	padding 0 5px

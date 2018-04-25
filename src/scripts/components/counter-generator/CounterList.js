@@ -14,14 +14,10 @@ const CounterList = ({
 			{
 				Object.keys(counterCollection).reverse().map((key) => {
 					const counter = counterCollection[key];
-					const removeButton = onRemoveClick ? (<button onClick={() => (onRemoveClick(counter.id, reducerName))}>Remove Counter</button>) : null;
+					const removeButton = onRemoveClick ? (<li className={CLASSNAME.counterRemoveItem}><button onClick={() => (onRemoveClick(counter.id, reducerName))} className={CLASSNAME.counterCtrlButton}>Remove</button></li>) : null;
 					return (
 						<li key={counter.id} className={CLASSNAME.counterItem}>
 							<div className={CLASSNAME.counterComponent}>
-								
-								{/* Conditional button*/}
-								{removeButton}
-								
 								<p className={CLASSNAME.counterItemCount}>Count: {counter.count}</p>
 								<ul className={CLASSNAME.counterCtrlList}>
 									<li className={CLASSNAME.counterCtrlItem}>
@@ -34,6 +30,8 @@ const CounterList = ({
 											Down
 										</button>
 									</li>
+									{/* Conditional button*/}
+									{removeButton}
 								</ul>
 							</div>
 						</li>

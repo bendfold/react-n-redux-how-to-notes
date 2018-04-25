@@ -18,6 +18,7 @@ const CLASSNAME = {
 	counterCtrlList: 'counter-ctrl-list',
 	counterCtrlItem: 'counter-ctrl-item',
 	counterCtrlButton: 'counter-ctrl-button',
+	counterRemoveItem: 'counter-remove-item'
 };
 
 const TYPE = {

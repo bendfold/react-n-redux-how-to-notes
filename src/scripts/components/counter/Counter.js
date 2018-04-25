@@ -9,16 +9,15 @@ const Counter = ({
 	onDownClick
 }) => (
 	<div className={CLASSNAME.counterComponent}>
-		<h2>Counter</h2>
-		<p>Count: {count}</p>
-		<ul>
-			<li>
-				<button onClick={onUpClick}>
+		<p className={CLASSNAME.counterItemCount}>Count: {count}</p>
+		<ul className={CLASSNAME.counterCtrlList}>
+			<li className={CLASSNAME.counterCtrlItem}>
+				<button onClick={onUpClick} className={CLASSNAME.counterCtrlButton}>
 					Up
 				</button>
 			</li>
-			<li>
-				<button onClick={onDownClick}>
+			<li className={CLASSNAME.counterCtrlItem}>
+				<button onClick={onDownClick} className={CLASSNAME.counterCtrlButton}>
 					Down
 				</button>
 			</li>
