@@ -1,17 +1,89 @@
-import { ACTIONS } from '../constants/index';
+import { TYPE } from '../constants/index';
+// LIBS
+import { v4 } from 'uuid';
+// API
+import * as api from '../api';
+// REDUCERS
+import { getIsFetching } from '../reducers';
 
-const {
-	INCREMENT_COUNTER,
-	DECREMENT_COUNTER
-} = ACTIONS;
-
-export const incrementCounter = () => {
+export const incrementCounter = (id, name) => {
 	return {
-		type: INCREMENT_COUNTER
+		type: TYPE.INCREMENT_COUNTER,
+		name,
+		id
 	}
 };
-export const decrementCounter = () => {
+
+export const decrementCounter = (id, name) => {
 	return {
-		type: DECREMENT_COUNTER
+		type: TYPE.DECREMENT_COUNTER,
+		name,
+		id
 	}
+};
+
+export const createCounter = (name) => {
+	return {
+		type: TYPE.CREATE_COUNTER,
+		id: v4(),
+		name
+	}
+};
+
+// Thunk Aysnc Method for adding data to the server. 
+export const addCounterToServer = (name) => (dispatch) => {
+	return api.addCounter().then(
+		(response) => {
+			dispatch({
+				type: TYPE.ADD_COUNTER_SUCCESS,
+				response,
+				name
+			});
+		}
+	);
+};
+
+// Thunk Aysnc Method for removing data to the server. 
+export const removeCounterFromServer = (id, name) => (dispatch) => {
+	return api.removeCounter(id).then(
+		(response) => {
+			dispatch({
+				type: TYPE.REMOVE_COUNTER_SUCCESS,
+				id,
+				name
+			});
+		}
+	);
+};
+
+// Thunk Aysnc Method for fetching data. 
+export const fetchCounters = (name, path, serverSim) => (dispatch, getState) => {
+	/*
+		---- TODO ----
+		If this can be fired from user interaction you need to add a
+		check in for isFetching to block extra network requests,
+		like this - https://goo.gl/FUTqgS
+	*/
+	dispatch({
+		type: TYPE.FETCH_COUNTERS_REQUEST,
+		name
+	});
+
+	return api.fetchCounterCollection(path, serverSim)
+		.then(
+			(payload) => {
+				dispatch({
+					type: TYPE.FETCH_COUNTERS_SUCCESS,
+					payload,
+					name
+				});
+			},
+			(error) => {
+				dispatch({
+					type: TYPE.FETCH_COUNTERS_FAILURE,
+					name,
+					message: error.message || 'Something went wrong'
+				});
+			}
+		);
 };

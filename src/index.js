@@ -1,14 +1,19 @@
-/* exported css */
+/* --- START APPLICATION ACCESSORIES --- */
+// EXPORTED CSS
 import './styles/app.styl';
-// Framework
+/* --- END APPLICATION ACCESSORIES --- */
+
+/* --- START APPLICATION FRAMEWORK & LOGIC--- */
+// FRAMEWORK
 import React from 'react';
 import ReactDOM from 'react-dom';
-// Component
-import App from './scripts/app';
+import { BrowserRouter, browserHistory } from 'react-router-dom'
+// COMPONENTS
+import Root from './scripts/components/Root';
+// STORE
+import configureStore from './scripts/store/configureStore';
 
 ReactDOM.render(
-	<App />,
+	<Root store={configureStore()} />,
 	document.getElementById('appRoot')
 );
-
-

@@ -1,6 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Slab')
 $bgndTestColor = Gainsboro
 
+html 
+	box-sizing border-box
+
+*,
+*:before,
+*:after
+	box-sizing inherit
+
 fontSize(n)
 	font-size n px
 	font-size (n/10) rem
@@ -9,12 +17,12 @@ body
 	background-color $bgndTestColor
 	height 100%
 	min-height 100%
-	
+
 h1
 	font-family 'Roboto Slab', sans-serif;
 	color Purple
 	text-align center
-	
+
 h2
 	list-style-type circle
 	fontSize(14)
@@ -22,36 +30,23 @@ h2
 	color #666
 	text-align left
 
+p
+	line-height 1.333
+
 a
 	text-decoration none
 	color Purple
 	font-weight bold
-	
+
 ul
 	margin 0
 	padding 0
-	
-.example-list-item
-	color #333
 
-.example-body-wrapper
-	width 100%
-	margin 0 auto
-	+for_breakpoint('medium')
-		width 75%
-	+for_breakpoint('large')
-		width 50%
-
-.example-foreground-img
-	display inline-block
-	height 72px
-	width 72px
+li
+	line-height 1.333
 	
-.example-background-img
-	display inline-block
-	height 72px
-	width 72px
-	background-image url('../images/ubuntu-512.png') 
-	background-position center center 
-	background-repeat no-repeat
-	background-size 100%
+code
+	color #c7254e
+	background-color #eee
+	border-radius 4px
+	padding 0 5px

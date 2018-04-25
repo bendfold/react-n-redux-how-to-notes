@@ -5,13 +5,14 @@ const cssnano = require('cssnano');
 const BabiliPlugin = require('babili-webpack-plugin');
 
 
-exports.devServer = ({ contentBase,compress,stats,hot,open }) => ({
+exports.devServer = ({ contentBase, compress, stats, hot, open, historyApiFallback }) => ({
 	devServer: {
 		contentBase,
 		compress,
 		stats,
 		hot, // enable HMR on the server
-		open 
+		open,
+		historyApiFallback
 	},
 });
 
@@ -21,6 +22,24 @@ exports.parsePug = () => ({
 			{
 				test: /\.pug$/,
 				use: ['pug-loader']
+			},
+		]
+	}
+});
+
+exports.parseMarkdown = () => ({
+	module: {
+		rules: [
+			{
+				test: /\.md$/,
+				use: [
+					{
+						loader: 'html-loader'
+					},
+					{
+						loader: 'markdown-loader'
+					}
+				]
 			},
 		]
 	}
@@ -39,7 +58,7 @@ exports.loadImages = (isProduction) => ({
 
 exports.parseStylus = (isProduction) => {
 
-	const cssDev = ['style-loader', 
+	const cssDev = ['style-loader',
 						{
 							loader: 'css-loader',
 							options: {
